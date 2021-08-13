@@ -4,7 +4,7 @@ Cross platform application for calculating render time
 
 ## Requirement
 
-Run this command on `wsl-1`:
+Run this command on `wsl-1` and `PowerShell` on `Windows 10`:
 
 ```shell
 python3.8 -m pip install kivy==2.0.0
