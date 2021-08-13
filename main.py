@@ -25,6 +25,22 @@ from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.utils import platform
+
+
+# checking platform and print message
+if platform == 'win':
+    print('hello from windows')
+if platform == 'linux':
+    print('hello from linux')
+if platform == 'android':
+    print('hello from android')
+if platform == 'macosx':
+    print('hello from macosx')
+if platform == 'ios':
+    print('hello from ios')
+if platform == 'unknown':
+    print('hello from unknown')
 
 
 class MDSRTGO_scr_1(Screen):
