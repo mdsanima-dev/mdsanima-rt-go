@@ -76,7 +76,7 @@
       }
     ],
     "scripts": {
-      "postbump": "./make_release.py && printf '\n  bumping version in __init__.py'",
+      "postbump": "./make_release.py && printf '\n  bumping version in __init__.py and spec_windows_version.rc'",
       "posttag": "printf '\n  Run 'git push --follow-tags origin master' to publish'",
       "release": "standard-version --commit-all --sign",
       "release-test": "standard-version --dry-run"
