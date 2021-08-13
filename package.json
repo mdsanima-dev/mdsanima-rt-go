@@ -1,0 +1,141 @@
+{
+  "name": "mdsanima-rt-go",
+  "version": "0.1.0",
+  "author": {
+    "name": "Marcin Różewski",
+    "email": "marcinrozewski@gmail.com"
+  },
+  "description": "MDSANIMA-RT-GO Cross platform APP",
+  "repository": "https://github.com/mdsanima-dev/mdsanima-rt-go.git",
+  "homepage": "https://github.com/mdsanima-dev/mdsanima-rt-go#readme",
+  "license": "MIT",
+  "project_urls": {
+    "Documentation": "https://mdsanima-dev.github.io/mdsanima-rt-go/",
+    "Source": "https://github.com/mdsanima-dev/mdsanima-rt-go",
+    "Bug Tracker": "https://github.com/mdsanima-dev/mdsanima-rt-go/issues"
+  },
+  "devDependencies": {
+    "standard-version": "^9.3.0",
+    "conventional-changelog": "^5.0.1",
+    "mdsanima-conventional-changelog": "https://github.com/mdsanima/conventional-changelog/releases/tag/v5.0.1"
+  },
+  "keywords": [
+    "mdsanima-rt-go",
+    "python",
+    "development",
+    "tools",
+    "changelog",
+    "automatic",
+    "versioning"
+  ],
+  "extra_require": {
+    "docs": [
+      "sphinx",
+      "sphinx-autoapi",
+      "sphinx-book-theme",
+      "sphinx-prompt",
+      "sphinx-tabs",
+      "recommonmark",
+      "myst_parser"
+    ]
+  },
+  "classifiers": [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Environment :: Plugins",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Natural Language :: Polish",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Desktop Environment",
+    "Topic :: Documentation :: Sphinx",
+    "Topic :: Education :: Testing",
+    "Topic :: Home Automation",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System",
+    "Topic :: System :: Console Fonts",
+    "Topic :: System :: Shells",
+    "Topic :: System :: System Shells",
+    "Topic :: Terminals",
+    "Topic :: Text Processing",
+    "Topic :: Text Processing :: Markup :: reStructuredText"
+  ],
+  "standard-version": {
+    "infile": "CHANGELOG.md",
+    "bumpFiles": [
+      {
+        "filename": "package.json",
+        "type": "json"
+      }
+    ],
+    "scripts": {
+      "postbump": "./make_release.py && printf '\n  bumping version in __init__.py'",
+      "posttag": "printf '\n  Run 'git push --follow-tags origin master' to publish'",
+      "release": "standard-version --commit-all --sign",
+      "release-test": "standard-version --dry-run"
+    },
+    "skip": {
+      "bump": false,
+      "changelog": false,
+      "commit": false,
+      "tag": false
+    },
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features",
+        "hidden": false
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes",
+        "hidden": false
+      },
+      {
+        "type": "docs",
+        "section": "Documentation",
+        "hidden": false
+      },
+      {
+        "type": "test",
+        "section": "Tests",
+        "hidden": false
+      },
+      {
+        "type": "build",
+        "section": "Build System",
+        "hidden": true
+      },
+      {
+        "type": "ci",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "hidden": true
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      }
+    ],
+    "header": "# Changelog\n\nAll notable changes to this project will be documented in this file.\nSee [standard-version](https://github.com/conventional-changelog/standard-version)\nand `README.md` file for commit guidelines. Also you should check [conventional-changelog](https://github.com/mdsanima/conventional-changelog) for more detail.\n\nDocomentation for **mdsanima-rt-go** Aplication is available\nat [docs mdsanima-dev](https://mdsanima-dev.github.io/mdsanima-rt-go/) be sure to check it.\n"
+  },
+  "scripts": {
+    "check": "standard-version --dry-run",
+    "release": "standard-version --commit-all --sign",
+    "release-tag": "standard-version --commit-all --sign -t mdsanima-rg-to-",
+    "alpha": "standard-version --commit-all --sign --prerelease alpha",
+    "beta": "standard-version --commit-all --sign --prerelease beta",
+    "test": "echo testing...",
+    "test-skip": "npm run release -- --skip.changelog",
+    "test-first": "npm run release -- --first-release"
+  }
+}
