@@ -35,7 +35,19 @@ standard-version --skip.bump --skip.changelog --commit-all --sign
 
 ## Build Windows `.exe`
 
+Run on `PowerShell` in Windows:
+
 ```PowerShell
 cd J:\github-mdsanima-dev\mdsanima-rt-go
 .\spec_windows_build.cmd
+```
+
+## Build Linux
+
+Run on `shell` in `ubuntu_20_04` Virtual Box:
+
+```shell
+sudo su
+cd /media/sf_mdsanima-rt-go
+sudo python3.8 -m PyInstaller --distpath /media/sf_mdsanima-rt-go/dist/linux --workpath /media/sf_mdsanima-rt-go/.build --onefile /media/sf_mdsanima-rt-go/spec_linux_onefile.spec
 ```
