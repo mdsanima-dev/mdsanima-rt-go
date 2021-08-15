@@ -40,10 +40,12 @@ a = Analysis(['main.py'],
             )
 
 a.binaries = [x for x in a.binaries if not
-              os.path.dirname(x[1]).startswith('C:\\Windows\\system32')]
+                os.path.dirname(x[1]).startswith('C:\\Windows\\system32')
+                ]
 
 pyz = PYZ(a.pure, a.zipped_data,
-             cipher=block_cipher)
+            cipher=block_cipher
+            )
 
 exe = EXE(pyz,
             a.scripts + [('O','','OPTION')],
@@ -63,5 +65,7 @@ exe = EXE(pyz,
             upx=True,
 	        upx_exclude=[],
 	        runtime_tmpdir=None,
-            console=True , icon='J:\\github-mdsanima-dev\\mdsanima-rt-go\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico',
-            version='J:\\github-mdsanima-dev\\mdsanima-rt-go\\spec_windows_version.rc')
+            console=True,
+            icon='J:\\github-mdsanima-dev\\mdsanima-rt-go\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico',
+            version='J:\\github-mdsanima-dev\\mdsanima-rt-go\\spec_windows_version.rc'
+            )
