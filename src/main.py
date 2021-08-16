@@ -10,7 +10,7 @@ kivy.require('2.0.0')
 import config.windows
 
 from config.setting import check_platform
-from config.image import app_icon
+from config.image import get_images
 from kivymd.app import MDApp
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
@@ -23,9 +23,16 @@ class MDSRTGO_scr_1(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_1, self).__init__(**kwargs)
         layout = FloatLayout()
+        img = get_images()
         btn = Button(text='SCREEN 2', on_release=self.screen_switch)
+        bg = Image(
+            source=img[1], size=self.size, pos=self.pos,
+            size_hint_y=None, size_hint_x=None,
+            height='1849sp', width='1075sp',
+            pos_hint={'center_x':.5, 'center_y':.5},
+            allow_stretch=True)
 
-        layout.add_widget(btn)
+        layout.add_widget(bg)
         self.add_widget(layout)
 
     def screen_switch(self, instance):
@@ -64,7 +71,8 @@ class MDSRTGO_scr_3(Screen):
 class MDSRTGO_main(MDApp):
     title = "MDSANIMA RT GO v" + __version__
     def build(self):
-        self.icon = app_icon
+        img = get_images()
+        self.icon = img[0]
         notification_icon = check_platform()
         notification.notify(
             'MDSANIMA RT GO', 'You have a 2 messages and 10 new issues',
