@@ -11,9 +11,11 @@ import config.windows
 
 from config.setting import check_platform, theme_kivy
 from config.image import get_images
+from datetime import datetime
 from kivymd.app import MDApp
 from kivymd.uix.button import MDIconButton, MDFlatButton
 from kivymd.uix.label import MDLabel
+from kivy.clock import Clock
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
@@ -26,6 +28,12 @@ class MDSRTGO_scr_1(Screen):
         super(MDSRTGO_scr_1, self).__init__(**kwargs)
         layout = FloatLayout()
         img = get_images()
+
+        mdsanima_rt_go = (
+            "MDSANIMA RT GO "
+            + '[b][color=#329EF4]'
+            + "v" + str(__version__)
+            + '[/color][/b]')
 
         bacground = Image(
             source=img[1], size=self.size, pos=self.pos,
@@ -50,12 +58,6 @@ class MDSRTGO_scr_1(Screen):
             font_style="Caption",
             theme_text_color='Secondary')
 
-        mdsanima_rt_go = (
-            "MDSANIMA RT GO "
-            + '[b][color=#329EF4]'
-            + "v" + str(__version__)
-            + '[/color][/b]')
-
         lbl_info_version = MDLabel(
             text = mdsanima_rt_go,
             halign = "center",
@@ -65,16 +67,33 @@ class MDSRTGO_scr_1(Screen):
             markup = True
             )
 
+        # add widget layout
         layout.add_widget(bacground)
         layout.add_widget(btn_go_rendering)
         layout.add_widget(btn_logo_mdsanima)
         layout.add_widget(lbl_click_me)
         layout.add_widget(lbl_info_version)
+
+        # draw all widget
         self.add_widget(layout)
+
+        # switch screen after 30 seconds
+        Clock.schedule_once(self.clk_screen, 30)
 
     def screen_switch(self, instance):
         self.manager.current = 'scr_2'
         self.manager.transition.direction = 'left'
+
+    def screen_switch_clk(self, instance):
+        if (self.manager.current == 'scr_1'):
+            self.manager.current = 'scr_2'
+            self.manager.transition.direction = 'left'
+        else:
+            pass
+
+    def clk_screen(self, dt):
+        time_clk = datetime.now()
+        self.screen_switch_clk(time_clk)
 
 
 class MDSRTGO_scr_2(Screen):
