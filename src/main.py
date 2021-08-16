@@ -7,17 +7,7 @@ from __init__ import __version__
 
 import kivy
 kivy.require('2.0.0')
-
-from kivy import Config
-
-
-# set configuration windows
-Config.set('graphics', 'width', '500')
-Config.set('graphics', 'height', '860')
-Config.set('graphics', 'minimum_width', '500')
-Config.set('graphics', 'minimum_height', '600')
-Config.set('graphics', 'resizable', False)
-
+import config.windows
 
 from kivymd.app import MDApp
 from kivy.core.window import Window
