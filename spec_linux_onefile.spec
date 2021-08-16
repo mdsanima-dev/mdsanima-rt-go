@@ -10,7 +10,7 @@ block_cipher = None
 
 a = Analysis(['main.py'],
             pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go'],
-            binaries=None,
+            binaries=[],
             datas=[],
             hiddenimports=[
                 'plyer.platforms.win.notification',
@@ -45,7 +45,7 @@ a = Analysis(['main.py'],
 #                os.path.dirname(x[1]).startswith('C:\\Windows\\system32')
 #                ]
 
-a.exclude_system_libraries(list_of_exceptions=['li*', '*krb*'])
+a.exclude_system_libraries(list_of_exceptions=['libexpat*', '*krb*'])
 
 pyz = PYZ(a.pure, a.zipped_data,
             cipher=block_cipher
@@ -53,7 +53,7 @@ pyz = PYZ(a.pure, a.zipped_data,
 
 exe = EXE(pyz,
             a.scripts + [('O','','OPTION')],
-            #a.binaries + [('O','','OPTION')],
+            a.binaries + [('O','','OPTION')],
             a.zipfiles + [('O','','OPTION')],
             a.datas + [
                 ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'DATA'),
