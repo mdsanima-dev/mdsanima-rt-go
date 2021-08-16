@@ -8,7 +8,7 @@ from src.__init__ import __version__
 block_cipher = None
 
 a = Analysis(['main.py'],
-            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\'],
+            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\'],
             binaries=[],
             datas=[],
             hiddenimports=[
