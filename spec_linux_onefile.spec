@@ -9,7 +9,7 @@ from src.__init__ import __version__
 block_cipher = None
 
 a = Analysis(['main.py'],
-            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go\src\'],
+            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\'],
             binaries=[],
             datas=[],
             hiddenimports=[
@@ -56,9 +56,9 @@ exe = EXE(pyz,
             a.binaries + [('O','','OPTION')],
             a.zipfiles + [('O','','OPTION')],
             a.datas + [
-                ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'DATA'),
-                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'DATA'),
-                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', '/media/sf_mdsanima-rt-go/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'DATA')
+                ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'DATA'),
+                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'DATA'),
+                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'DATA')
                 ],
             [],
             exclude_binaries=False,
@@ -71,5 +71,5 @@ exe = EXE(pyz,
 	        upx_exclude=[],
 	        runtime_tmpdir=None,
             console=True,
-            icon='/media/sf_mdsanima-rt-go/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico'
+            icon='/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico'
             )
