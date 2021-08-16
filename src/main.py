@@ -15,22 +15,7 @@ from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen, ScreenManager
-from kivy.utils import platform
-
-
-# checking platform and print message
-if platform == 'win':
-    print('hello from windows')
-if platform == 'linux':
-    print('hello from linux')
-if platform == 'android':
-    print('hello from android')
-if platform == 'macosx':
-    print('hello from macosx')
-if platform == 'ios':
-    print('hello from ios')
-if platform == 'unknown':
-    print('hello from unknown')
+from config.setting import check_platform
 
 
 class MDSRTGO_scr_1(Screen):
@@ -78,6 +63,7 @@ class MDSRTGO_scr_3(Screen):
 class MDSRTGO_main(MDApp):
     title = "MDSANIMA RT GO v" + __version__
     def build(self):
+        notification_icon = check_platform()
         sm = ScreenManager()
         sm.add_widget(MDSRTGO_scr_1(name='scr_1'))
         sm.add_widget(MDSRTGO_scr_2(name='scr_2'))
