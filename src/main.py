@@ -10,6 +10,7 @@ kivy.require('2.0.0')
 import config.windows
 
 from config.setting import check_platform
+from config.image import app_icon
 from kivymd.app import MDApp
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
@@ -63,6 +64,7 @@ class MDSRTGO_scr_3(Screen):
 class MDSRTGO_main(MDApp):
     title = "MDSANIMA RT GO v" + __version__
     def build(self):
+        self.icon = app_icon
         notification_icon = check_platform()
         notification.notify(
             'MDSANIMA RT GO', 'You have a 2 messages and 10 new issues',
