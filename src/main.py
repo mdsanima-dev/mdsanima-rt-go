@@ -50,10 +50,26 @@ class MDSRTGO_scr_1(Screen):
             font_style="Caption",
             theme_text_color='Secondary')
 
+        mdsanima_rt_go = (
+            "MDSANIMA RT GO "
+            + '[b][color=#329EF4]'
+            + "v" + str(__version__)
+            + '[/color][/b]')
+
+        lbl_info_version = MDLabel(
+            text = mdsanima_rt_go,
+            halign = "center",
+            pos_hint = {'center_x':.5, 'center_y':.02},
+            font_style = "Caption",
+            theme_text_color = 'Secondary',
+            markup = True
+            )
+
         layout.add_widget(bacground)
         layout.add_widget(btn_go_rendering)
         layout.add_widget(btn_logo_mdsanima)
         layout.add_widget(lbl_click_me)
+        layout.add_widget(lbl_info_version)
         self.add_widget(layout)
 
     def screen_switch(self, instance):
@@ -97,8 +113,11 @@ class MDSRTGO_main(MDApp):
         self.icon = img[0]
         notification_icon = check_platform()
         notification.notify(
-            'MDSANIMA RT GO', 'You have a 2 messages and 10 new issues',
-            app_icon=notification_icon)
+            title="MDSANIMA RT GO",
+            message="You have a 2 messages and 10 new issues",
+            app_name="MDSANIMA RT GO",
+            app_icon=notification_icon,
+            timeout=10)
         sm = ScreenManager()
         sm.add_widget(MDSRTGO_scr_1(name='scr_1'))
         sm.add_widget(MDSRTGO_scr_2(name='scr_2'))
