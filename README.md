@@ -51,3 +51,40 @@ sudo su
 cd /media/sf_mdsanima-rt-go
 sudo python3.8 -m PyInstaller --distpath /media/sf_mdsanima-rt-go/dist/linux --workpath /media/sf_mdsanima-rt-go/.build --onefile /media/sf_mdsanima-rt-go/spec_linux_onefile.spec
 ```
+
+## Build Android `armeabi-v7a`
+
+Connect phone to pc and run on `PowerShell` this command:
+
+```PowerShell
+cd C:\adb
+.\adb.exe devices
+```
+
+If List of devices attached is empty run thic command:
+
+```PowerShell
+.\adb.exe kill-server
+.\adb.exe devices
+```
+
+Now shuld show devices
+
+Run this on `wsl` to copy all files in to `home` directory:
+
+```shell
+cd /home/mdsanima/mdsanima-rt-go/
+cp -r /mnt/j/github-mdsanima-dev/mdsanima-rt-go/* .
+```
+
+Build and deploy:
+
+```shell
+sudo buildozer -v android debug deploy run logcat
+```
+
+Copy `.apk` to `dist` folder:
+
+```shell
+cp dist/android/mdsanima.rt.go-0.1.0-armeabi-v7a-debug.apk /mnt/j/github-mdsanima-dev/mdsanima-rt-go/dist/android/
+```
