@@ -45,6 +45,8 @@ a = Analysis(['main.py'],
 #                os.path.dirname(x[1]).startswith('C:\\Windows\\system32')
 #                ]
 
+a.exclude_system_libraries(list_of_exceptions=['li*', '*krb*'])
+
 pyz = PYZ(a.pure, a.zipped_data,
             cipher=block_cipher
             )

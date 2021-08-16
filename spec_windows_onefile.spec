@@ -39,16 +39,26 @@ a = Analysis(['main.py'],
             noarchive=False
             )
 
-a.binaries = [x for x in a.binaries if not
-                os.path.dirname(x[1]).startswith('C:\\Windows\\system32')
-                ]
+#a.binaries = [x for x in a.binaries if not
+#                os.path.dirname(x[1]).startswith('C:\\Windows\\system32')
+#                ]
 
 pyz = PYZ(a.pure, a.zipped_data,
             cipher=block_cipher
             )
 
+#splash = Splash('J:/github-mdsanima-dev/mdsanima-rt-go/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png',
+#                binaries=a.binaries,
+#                datas=a.datas,
+#                text_pos=(10, 50),
+#                text_size=12,
+#                text_color='black'
+#                )
+
 exe = EXE(pyz,
             a.scripts + [('O','','OPTION')],
+            #splash,
+            #splash.binaries,
             a.binaries + [('O','','OPTION')],
             a.zipfiles + [('O','','OPTION')],
             a.datas + [
