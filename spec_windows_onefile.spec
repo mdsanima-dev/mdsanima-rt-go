@@ -3,12 +3,12 @@ from kivy_deps import sdl2
 from plyer import notification
 from kivymd import hooks_path as kivymd_hooks_path
 
-from __init__ import __version__
+from src.__init__ import __version__
 
 block_cipher = None
 
 a = Analysis(['main.py'],
-            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go'],
+            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\'],
             binaries=[],
             datas=[],
             hiddenimports=[
@@ -47,7 +47,7 @@ pyz = PYZ(a.pure, a.zipped_data,
             cipher=block_cipher
             )
 
-#splash = Splash('J:/github-mdsanima-dev/mdsanima-rt-go/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png',
+#splash = Splash('J:/github-mdsanima-dev/mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png',
 #                binaries=a.binaries,
 #                datas=a.datas,
 #                text_pos=(10, 50),
@@ -62,9 +62,9 @@ exe = EXE(pyz,
             a.binaries + [('O','','OPTION')],
             a.zipfiles + [('O','','OPTION')],
             a.datas + [
-                ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.png', 'DATA'),
-                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.png', 'DATA'),
-                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico', 'DATA')
+                ('src/image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.png', 'DATA'),
+                ('src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.png', 'DATA'),
+                ('src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico', 'DATA')
                 ],
             [],
             name=("mdsanima-rt-go-" + str(__version__) + "-windows64-debug"),
@@ -76,6 +76,6 @@ exe = EXE(pyz,
 	        upx_exclude=[],
 	        runtime_tmpdir=None,
             console=True,
-            icon='J:\\github-mdsanima-dev\\mdsanima-rt-go\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico',
+            icon='J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico',
             version='J:\\github-mdsanima-dev\\mdsanima-rt-go\\spec_windows_version.rc'
             )

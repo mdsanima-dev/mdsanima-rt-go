@@ -4,12 +4,12 @@
 from kivymd import hooks_path as kivymd_hooks_path
 #from kivy.tools.packaging.pyinstaller_hooks import get_deps_all, hookspath, runtime_hooks
 
-from __init__ import __version__
+from src.__init__ import __version__
 
 block_cipher = None
 
 a = Analysis(['main.py'],
-            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go'],
+            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go\src\'],
             binaries=[],
             datas=[],
             hiddenimports=[
