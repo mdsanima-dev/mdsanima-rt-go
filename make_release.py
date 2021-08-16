@@ -68,7 +68,7 @@ def go_bump_init():
     Reading file `__init__.py` and splits lines. Searching matching lines
     and replacing this line with new version. Printing info in the console.
     """
-    path_to_file = HERE / "__init__.py"
+    path_to_file = HERE / "src/__init__.py"
     with open(path_to_file, 'r', encoding='utf-8') as r:
         lines = r.read().splitlines()
     lines_len = len(lines)
@@ -80,7 +80,9 @@ def go_bump_init():
             new_version = go_check()
             print('[MDSANIMA-DEV] => checking new version =>', new_version)
             new_line_versi = '__version__ = "' + new_version + '"'
-            go_read_write('__init__.py', str(lines[line]), str(new_line_versi))
+            go_read_write(
+                'src/__init__.py', str(lines[line]), str(new_line_versi)
+                )
             print('[MDSANIMA-DEV] => replace line', line + 1, new_line_versi)
 
 
