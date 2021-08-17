@@ -1,5 +1,11 @@
 # mdsanima-rt-go
 
+![GitHub issues](https://img.shields.io/github/issues-raw/mdsanima-dev/mdsanima-rt-go?style=flat)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/mdsanima-dev/mdsanima-rt-go?style=flat)
+![GitHub](https://img.shields.io/github/license/mdsanima-dev/mdsanima-rt-go?style=flat)
+![Lines of code](https://img.shields.io/tokei/lines/github/mdsanima-dev/mdsanima-rt-go?style=flat)
+![GitHub top language](https://img.shields.io/github/languages/top/mdsanima-dev/mdsanima-rt-go)
+
 Cross Platform Application for Calculating Render Time.
 
 ## Requirement
