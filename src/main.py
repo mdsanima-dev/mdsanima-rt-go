@@ -8,6 +8,8 @@ from __init__ import __version__
 import kivy
 kivy.require('2.0.0')
 import config.windows
+import os
+import sys
 
 from config.setting import check_platform, theme_kivy
 from config.image import get_images
@@ -23,6 +25,20 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 from plyer import notification
 
 
+def resource_path(relative_path: str):
+    """
+    Create path on the file in all platform build.
+
+    :param relative_path: wher file is stored
+    :type relative_path: str
+    :return: resource path on platform build
+    :rtype: path
+    """
+    base_path = getattr(
+        sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+
 class MDSRTGO_scr_1(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_1, self).__init__(**kwargs)
@@ -36,7 +52,7 @@ class MDSRTGO_scr_1(Screen):
             + '[/color][/b]')
 
         bacground = Image(
-            source=img[1], size=self.size, pos=self.pos,
+            source=resource_path(img[1]), size=self.size, pos=self.pos,
             size_hint_y=None, size_hint_x=None,
             height='1849sp', width='1075sp',
             pos_hint={'center_x':.5, 'center_y':.5},
@@ -48,7 +64,7 @@ class MDSRTGO_scr_1(Screen):
             font_size = "35")
 
         btn_logo_mdsanima = MDIconButton(
-            icon=img[3], on_press=self.screen_switch,
+            icon=resource_path(img[3]), on_press=self.screen_switch,
             user_font_size="80", size_hint_y=None,
             pos_hint={'center_x':.5, 'center_y':.5})
 
@@ -129,13 +145,13 @@ class MDSRTGO_main(MDApp):
     def build(self):
         theme_kivy(self, 'Orange', 'Blue', 'Dark')
         img = get_images()
-        self.icon = img[0]
+        self.icon = resource_path(img[0])
         notification_icon = check_platform()
         notification.notify(
             title="MDSANIMA RT GO",
             message="You have a 2 messages and 10 new issues",
             app_name="MDSANIMA RT GO",
-            app_icon=notification_icon,
+            app_icon=resource_path(notification_icon),
             timeout=10)
         sm = ScreenManager()
         sm.add_widget(MDSRTGO_scr_1(name='scr_1'))

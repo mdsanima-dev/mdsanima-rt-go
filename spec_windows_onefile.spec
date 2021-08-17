@@ -62,12 +62,12 @@ exe = EXE(pyz,
             a.binaries + [('O','','OPTION')],
             a.zipfiles + [('O','','OPTION')],
             a.datas + [
-                ('../image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.png', 'DATA'),
-                ('../image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.png', 'DATA'),
-                ('../image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico', 'DATA'),
-                ('../image/bacground/bg_1.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\bacground\\bg_1.png', 'DATA'),
-                ('../image/bacground/bg_2.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\bacground\\bg_2.png', 'DATA'),
-                ('../image/ic_launcher/web_hi_res_512.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\web_hi_res_512.png', 'DATA')
+                ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.png', 'DATA'),
+                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.png', 'DATA'),
+                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico', 'DATA'),
+                ('image/bacground/bg_1.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\bacground\\bg_1.png', 'DATA'),
+                ('image/bacground/bg_2.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\bacground\\bg_2.png', 'DATA'),
+                ('image/ic_launcher/web_hi_res_512.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\web_hi_res_512.png', 'DATA')
                 ],
             [],
             name=("mdsanima-rt-go-" + str(__version__) + "-windows64-debug"),

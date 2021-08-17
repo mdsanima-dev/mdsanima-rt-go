@@ -1,6 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 #from kivy_deps import sdl2
-#from plyer import notification
+from plyer import notification
 from kivymd import hooks_path as kivymd_hooks_path
 #from kivy.tools.packaging.pyinstaller_hooks import get_deps_all, hookspath, runtime_hooks
 
@@ -8,12 +8,12 @@ from src.__init__ import __version__
 
 block_cipher = None
 
-a = Analysis(['main.py'],
-            pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\'],
+a = Analysis(['src/main.py'],
+            pathex=['/media/sf_mdsanima-rt-go/src/'],
             binaries=[],
             datas=[],
             hiddenimports=[
-                'plyer.platforms.win.notification',
+                'plyer.platforms.linux.notification',
                 'kivymd.uix.toolbar',
                 'kivymd.icon_definitions',
                 'kivymd.icon_definitions.md_icons',
@@ -29,7 +29,7 @@ a = Analysis(['main.py'],
                 'docutils',
                 'grpc',
                 'numpy',
-                'PIL',
+                #'PIL',
                 'cryptography',
                 'lib2to3',
                 'win32com'
@@ -58,7 +58,10 @@ exe = EXE(pyz,
             a.datas + [
                 ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'DATA'),
                 ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'DATA'),
-                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'DATA')
+                ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'DATA'),
+                ('image/bacground/bg_1.png', '/media/sf_mdsanima-rt-go/src/image/bacground/bg_1.png', 'DATA'),
+                ('image/bacground/bg_2.png', '/media/sf_mdsanima-rt-go/src/image/bacground/bg_2.png', 'DATA'),
+                ('image/ic_launcher/web_hi_res_512.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/web_hi_res_512.png', 'DATA')
                 ],
             [],
             exclude_binaries=False,
@@ -71,5 +74,5 @@ exe = EXE(pyz,
 	        upx_exclude=[],
 	        runtime_tmpdir=None,
             console=True,
-            icon='/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico'
+            icon='/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png'
             )

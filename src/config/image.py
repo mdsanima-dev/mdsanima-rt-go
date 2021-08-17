@@ -1,15 +1,12 @@
 """
-Set images resources
+Set images variables
 """
 
 
-from utils.resource import resource_path
-
-
-app_icon = resource_path('../image/ic_launcher/res/mipmap-xhdpi/ic_launcher.png')
-bg_welcome = resource_path('../image/bacground/bg_1.png')
-bg_main = resource_path('../image/bacground/bg_2.png')
-logo_web = resource_path('../image/ic_launcher/web_hi_res_512.png')
+app_icon = 'image/ic_launcher/res/mipmap-xhdpi/ic_launcher.png'
+bg_welcome = 'image/bacground/bg_1.png'
+bg_main = 'image/bacground/bg_2.png'
+logo_web = 'image/ic_launcher/web_hi_res_512.png'
 
 
 def get_images():
