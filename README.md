@@ -16,6 +16,13 @@ Run this command in `wsl-1` and `PowerShell` on the `Windows 10`:
 python3.8 -m pip install -r requirements.txt
 ```
 
+If kivy does not detect opengl add this code to `setting.py`:
+
+```python
+import os
+os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
+```
+
 ## Run `standard-version`
 
 First run `standard-version` on `wsl` to generate `changelog.md` and bumping
