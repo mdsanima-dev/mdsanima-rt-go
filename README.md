@@ -25,7 +25,12 @@ Microsoft Windows 10:
 
 Samsung S7 Edge Android armeabi-v7a:
 
-<img width="315" alt="mdsanima rt go-0 2 0-armeabi-v7a-debug_samsung_s7edge_2_splash" src="https://user-images.githubusercontent.com/3817871/129733791-6a784e94-fdd2-4231-89e1-e1484baa6108.jpg">   <img width="315" alt="mdsanima rt go-0 2 0-armeabi-v7a-debug_samsung_s7edge_1_main" src="https://user-images.githubusercontent.com/3817871/129733777-17447d63-a9a3-4aa5-9337-2a9a748b17e2.jpg">   <img width="315" alt="mdsanima rt go-0 2 0-armeabi-v7a-debug_samsung_s7edge_3_notification" src="https://user-images.githubusercontent.com/3817871/129733669-04e80fd7-60f8-4932-985b-030ca1bde9e8.jpg">
+| ![mdsanimartgo-020-armeabi-v7a-debug_samsung_s7edge_splash][1] | ![mdsanimartgo-020-armeabi-v7a-debug_samsung_s7edge_main][2] | ![omdsanimartgo-020-armeabi-v7a-debug_samsung_s7edge_notification][3] |
+|---|---|---|
+
+[1]: https://user-images.githubusercontent.com/3817871/129733791-6a784e94-fdd2-4231-89e1-e1484baa6108.jpg
+[2]: https://user-images.githubusercontent.com/3817871/129733777-17447d63-a9a3-4aa5-9337-2a9a748b17e2.jpg
+[3]: https://user-images.githubusercontent.com/3817871/129733669-04e80fd7-60f8-4932-985b-030ca1bde9e8.jpg
 
 ## Requirement
 
