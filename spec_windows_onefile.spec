@@ -7,7 +7,7 @@ from src.__init__ import __version__
 
 block_cipher = None
 
-a = Analysis(['main.py'],
+a = Analysis(['src\\main.py'],
             pathex=['J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\'],
             binaries=[],
             datas=[],
@@ -28,7 +28,7 @@ a = Analysis(['main.py'],
                 'docutils',
                 'grpc',
                 'numpy',
-                'PIL',
+                #'PIL',
                 'cryptography',
                 'lib2to3',
                 'win32com'
@@ -39,9 +39,9 @@ a = Analysis(['main.py'],
             noarchive=False
             )
 
-#a.binaries = [x for x in a.binaries if not
-#                os.path.dirname(x[1]).startswith('C:\\Windows\\system32')
-#                ]
+a.binaries = [x for x in a.binaries if not
+                os.path.dirname(x[1]).startswith('C:\\Windows\\system32')
+                ]
 
 pyz = PYZ(a.pure, a.zipped_data,
             cipher=block_cipher
@@ -62,9 +62,12 @@ exe = EXE(pyz,
             a.binaries + [('O','','OPTION')],
             a.zipfiles + [('O','','OPTION')],
             a.datas + [
-                ('src/image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.png', 'DATA'),
-                ('src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.png', 'DATA'),
-                ('src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico', 'DATA')
+                ('../image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.png', 'DATA'),
+                ('../image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.png', 'DATA'),
+                ('../image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico', 'DATA'),
+                ('../image/bacground/bg_1.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\bacground\\bg_1.png', 'DATA'),
+                ('../image/bacground/bg_2.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\bacground\\bg_2.png', 'DATA'),
+                ('../image/ic_launcher/web_hi_res_512.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\web_hi_res_512.png', 'DATA')
                 ],
             [],
             name=("mdsanima-rt-go-" + str(__version__) + "-windows64-debug"),
