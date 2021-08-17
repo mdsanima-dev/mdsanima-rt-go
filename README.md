@@ -8,6 +8,25 @@
 
 Cross Platform Application for Calculating Render Time.
 
+## Testing
+
+This is a base application build on `Windows` `Android` and `Linux`.
+
+All build is a debug mode.
+This is a not production build only for testing.
+
+Linux Ubunut 20.04:
+
+<img width="960" alt="mdsanima rt go-0 2 0-linux64-debug" src="https://user-images.githubusercontent.com/3817871/129733143-f477b77e-dfce-4ebc-8dd9-a7f67bd8df22.png">
+
+Microsoft Windows 10:
+
+<img width="960" alt="mdsanima rt go-0 2 0-windows64-debug" src="https://user-images.githubusercontent.com/3817871/129733177-bb7ced9c-cebf-42f8-b3a2-d6b295510ead.png">
+
+Samsung S7 Edge Android armeabi-v7a:
+
+<img width="315" alt="mdsanima rt go-0 2 0-armeabi-v7a-debug_samsung_s7edge_2_splash" src="https://user-images.githubusercontent.com/3817871/129733791-6a784e94-fdd2-4231-89e1-e1484baa6108.jpg">   <img width="315" alt="mdsanima rt go-0 2 0-armeabi-v7a-debug_samsung_s7edge_1_main" src="https://user-images.githubusercontent.com/3817871/129733777-17447d63-a9a3-4aa5-9337-2a9a748b17e2.jpg">   <img width="315" alt="mdsanima rt go-0 2 0-armeabi-v7a-debug_samsung_s7edge_3_notification" src="https://user-images.githubusercontent.com/3817871/129733669-04e80fd7-60f8-4932-985b-030ca1bde9e8.jpg">
+
 ## Requirement
 
 Run this command in `wsl-1` and `PowerShell` on the `Windows 10`:
