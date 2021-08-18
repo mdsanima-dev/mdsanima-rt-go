@@ -151,8 +151,8 @@ class MDSRTGO_scr_2(Screen):
             pos_hint={'top':1})
 
         btn_app_info = MDFlatButton(
-            text="app info", size_hint=(None,None), size=(100,40),
-            pos_hint={'x':0.410,'y':0.03},
+            text="app info", size_hint=(None,None), size=(101,40),
+            pos_hint={'x':0.416,'y':0.03},
             on_release=self.screen_switch)
 
         lbl_info_version = MDLabel(
@@ -188,7 +188,7 @@ class MDSRTGO_scr_3(Screen):
         self.add_widget(layout)
 
     def screen_switch(self, instance):
-        self.manager.current = 'scr_1'
+        self.manager.current = 'scr_2'
         self.manager.transition.direction = 'right'
 
 
