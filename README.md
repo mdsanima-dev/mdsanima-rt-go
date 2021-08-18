@@ -15,15 +15,15 @@ This is a base application build on `Windows` `Android` and `Linux`.
 All build is a debug mode.
 This is a not production build only for testing.
 
-Linux Ubuntu 20.04:
+`Linux Ubuntu 20.04`
 
 <img width="960" alt="mdsanima rt go-0 2 0-linux64-debug" src="https://user-images.githubusercontent.com/3817871/129733143-f477b77e-dfce-4ebc-8dd9-a7f67bd8df22.png">
 
-Microsoft Windows 10:
+`Microsoft Windows 10`
 
 <img width="960" alt="mdsanima rt go-0 2 0-windows64-debug" src="https://user-images.githubusercontent.com/3817871/129733177-bb7ced9c-cebf-42f8-b3a2-d6b295510ead.png">
 
-Samsung S7 Edge Android armeabi-v7a:
+`Samsung S7 Edge Android armeabi-v7a`
 
 | ![mdsanimartgo-020-armeabi-v7a-debug_samsung_s7edge_splash][1] | ![mdsanimartgo-020-armeabi-v7a-debug_samsung_s7edge_main][2] | ![omdsanimartgo-020-armeabi-v7a-debug_samsung_s7edge_notification][3] |
 |---|---|---|
@@ -34,7 +34,7 @@ Samsung S7 Edge Android armeabi-v7a:
 
 ## Requirement
 
-Run this command in `wsl-1` and `PowerShell` on the `Windows 10`:
+Run this command in **wsl-1** and **PowerShell** on the `Windows 10`:
 
 ```shell
 python3.8 -m pip install -r requirements.txt
@@ -49,8 +49,8 @@ os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
 ## Run `standard-version`
 
-First run `standard-version` on `wsl` to generate `CHANGELOG.md` and bumping
-verion in `__init__.py` and `spec_windows_version.rc` files:
+First run **standard-version** on **wsl** to generate `CHANGELOG.md`
+and bumping verion in `__init__.py` and `spec_windows_version.rc` files:
 
 ```shell
 standard-version --skip.commit --skip.tag
@@ -84,7 +84,10 @@ Run on `shell` in `ubuntu_20_04` Virtual Box:
 ```shell
 sudo su
 cd /media/sf_mdsanima-rt-go
-sudo python3.8 -m PyInstaller --distpath /media/sf_mdsanima-rt-go/dist/linux --workpath /media/sf_mdsanima-rt-go/.build --onefile /media/sf_mdsanima-rt-go/spec_linux_onefile.spec
+sudo python3.8 -m PyInstaller \
+    --distpath /media/sf_mdsanima-rt-go/dist/linux \
+    --workpath /media/sf_mdsanima-rt-go/.build \
+    --onefile /media/sf_mdsanima-rt-go/spec_linux_onefile.spec
 ```
 
 ## Build Android `armeabi-v7a`
@@ -121,5 +124,23 @@ sudo buildozer -v android debug deploy run logcat
 Copy `.apk` to `dist` folder:
 
 ```shell
-cp dist/android/mdsanima.rt.go-0.1.0-armeabi-v7a-debug.apk /mnt/j/github-mdsanima-dev/mdsanima-rt-go/dist/android/
+cp dist/android/mdsanima.rt.go-0.1.0-armeabi-v7a-debug.apk \
+    /mnt/j/github-mdsanima-dev/mdsanima-rt-go/dist/android/
 ```
+
+## Connect With Me
+
+Hi there, I'm Marcin Różewski aka [MDSANIMA](https://mdsanima.com).
+These are my social media, check it out please. Thanks.
+
+![GitHub followers](https://img.shields.io/github/followers/mdsanima?style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/toudajew?style=flat-square)
+![Twitter Follow](https://img.shields.io/twitter/follow/str9led?style=flat-square)
+![Twitter Follow](https://img.shields.io/twitter/follow/mdsanima?style=flat-square)
+![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCB5na2BRwrnwx00LCspbG5Q?style=social)
+![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCB5na2BRwrnwx00LCspbG5Q?style=social)
+
+## License
+
+Cross Platform App `MDSANIMA RT GO` is released under the terms of
+[Apache-2.0 License](https://github.com/mdsanima-dev/mdsanima-rt-go/blob/master/LICENSE)
