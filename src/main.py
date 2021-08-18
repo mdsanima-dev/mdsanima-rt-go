@@ -7,10 +7,10 @@ from __init__ import __version__
 
 import kivy
 kivy.require('2.0.0')
-import config.windows
 import os
 import sys
 
+from config import windows
 from config.setting import check_platform, theme_kivy
 from config.image import get_images
 from datetime import datetime
