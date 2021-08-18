@@ -347,12 +347,30 @@ class MDSRTGO_scr_2(Screen):
 
 
 class MDSRTGO_scr_3(Screen):
+    """
+    Info app screen cover information of the `MDSANIMA RT GO` application.
+
+    :param Screen: screen class kivy
+    :type Screen: class
+    """
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_3, self).__init__(**kwargs)
         layout = MDFloatLayout()
+        img = get_images()
+
+        bacground = Image(
+            source=resource_path(img[2]), size=self.size, pos=self.pos,
+            size_hint_y=None, size_hint_x=None,
+            height='1849sp', width='1075sp',
+            pos_hint={'center_x':0.5, 'center_y':0.5},
+            allow_stretch=True)
+
         btn = Button(text='SCREEN 1', on_release=self.screen_switch)
 
-        layout.add_widget(btn)
+        # add widget layout
+        layout.add_widget(bacground)
+
+        # draw all widget
         self.add_widget(layout)
 
     def screen_switch(self, instance):
