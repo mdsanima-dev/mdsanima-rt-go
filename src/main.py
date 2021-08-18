@@ -358,6 +358,12 @@ class MDSRTGO_scr_3(Screen):
         layout = MDFloatLayout()
         img = get_images()
 
+        mdsanima_rt_go = (
+            'MDSANIMA RT GO '
+            + '[b][color=#329EF4]'
+            + 'v' + str(__version__)
+            + '[/color][/b]')
+
         bacground = Image(
             source=resource_path(img[2]), size=self.size, pos=self.pos,
             size_hint_y=None, size_hint_x=None,
@@ -365,10 +371,19 @@ class MDSRTGO_scr_3(Screen):
             pos_hint={'center_x':0.5, 'center_y':0.5},
             allow_stretch=True)
 
+        lbl_info_version = MDLabel(
+            text=mdsanima_rt_go,
+            halign='center',
+            pos_hint={'center_x':0.5, 'center_y':0.02},
+            font_style='Caption',
+            theme_text_color='Secondary',
+            markup=True)
+
         btn = Button(text='SCREEN 1', on_release=self.screen_switch)
 
         # add widget layout
         layout.add_widget(bacground)
+        layout.add_widget(lbl_info_version)
 
         # draw all widget
         self.add_widget(layout)
