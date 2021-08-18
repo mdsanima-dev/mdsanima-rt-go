@@ -171,7 +171,8 @@ class MDSRTGO_scr_2(Screen):
 
         lbl_render_frame = MDLabel(
             text='RENDER TIME ONE FRAME',
-            halign='center',
+            halign='left',
+            size_hint=(None,None), size=(170,40),
             pos_hint={'center_x':0.24, 'center_y':0.84},
             font_style='Body2',
             theme_text_color='Hint')
@@ -242,6 +243,23 @@ class MDSRTGO_scr_2(Screen):
             size_hint_x=0.75,
             color='#7c7c7c')
 
+        lbl_render_time = MDLabel(
+            text='RENDER TIME',
+            halign='left',
+            size_hint=(None,None), size=(170,40),
+            pos_hint={'center_x':0.24, 'center_y':0.5},
+            font_style='Body2',
+            theme_text_color='Hint')
+
+        lbl_render_time_result = MDLabel(
+            text='10 minutes',
+            halign='left',
+            size_hint=(None,None), size=(170,40),
+            pos_hint={'center_x':0.24, 'center_y':0.45},
+            font_style='H5',
+            theme_text_color='Custom',
+            text_color = [.2510,.5529,.9765,1])
+
         btn_app_info = MDFlatButton(
             text='app info', size_hint=(None,None), size=(101,40),
             pos_hint={'x':0.416,'y':0.03},
@@ -274,6 +292,9 @@ class MDSRTGO_scr_2(Screen):
         layout.add_widget(lbl_seconds)
         layout.add_widget(lbl_seconds_val)
         layout_box.add_widget(sld_seconds_val)
+
+        layout.add_widget(lbl_render_time)
+        layout.add_widget(lbl_render_time_result)
 
         layout.add_widget(btn_app_info)
         layout.add_widget(lbl_info_version)
