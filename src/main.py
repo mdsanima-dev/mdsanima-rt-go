@@ -17,7 +17,6 @@ from config.image import get_images
 from config.setting import check_platform, theme_kivy
 
 from kivy.clock import Clock
-from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivymd.app import MDApp
@@ -371,6 +370,15 @@ class MDSRTGO_scr_3(Screen):
             pos_hint={'center_x':0.5, 'center_y':0.5},
             allow_stretch=True)
 
+        btn_back_to_main = MDIconButton(
+            on_press=self.screen_switch,
+            font_size='45sp',
+            pos_hint={'center_x':0.07, 'center_y':0.96},
+            icon='arrow-left',
+            theme_text_color='Custom',
+            text_color=[.2510,.5529,.9765,1],
+            md_bg_color=[0,0,0,0])
+
         lbl_info_version = MDLabel(
             text=mdsanima_rt_go,
             halign='center',
@@ -379,10 +387,9 @@ class MDSRTGO_scr_3(Screen):
             theme_text_color='Secondary',
             markup=True)
 
-        btn = Button(text='SCREEN 1', on_release=self.screen_switch)
-
         # add widget layout
         layout.add_widget(bacground)
+        layout.add_widget(btn_back_to_main)
         layout.add_widget(lbl_info_version)
 
         # draw all widget
