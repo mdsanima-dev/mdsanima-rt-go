@@ -16,12 +16,12 @@ from config.image import get_images
 from datetime import datetime
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.button import MDIconButton, MDFlatButton
 from kivymd.uix.label import MDLabel
 from kivymd.uix.toolbar import MDToolbar
 from kivy.clock import Clock
 from kivy.uix.button import Button
-from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen, ScreenManager
 from plyer import notification
@@ -50,7 +50,7 @@ class MDSRTGO_scr_1(Screen):
     """
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_1, self).__init__(**kwargs)
-        layout = FloatLayout()
+        layout = MDFloatLayout()
         img = get_images()
 
         mdsanima_rt_go = (
@@ -129,10 +129,17 @@ class MDSRTGO_scr_2(Screen):
     """
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_2, self).__init__(**kwargs)
-        layout = FloatLayout()
+        layout = MDFloatLayout()
+
+        toolbar = MDToolbar(
+            title='RENDER TIME CALCULATOR',
+            elevation=10,
+            pos_hint={'top':1})
+
         btn = Button(text='SCREEN 3', on_release=self.screen_switch)
 
-        layout.add_widget(btn)
+        layout.add_widget(toolbar)
+        #layout.add_widget(btn)
         self.add_widget(layout)
 
     def screen_switch(self, instance):
@@ -143,7 +150,7 @@ class MDSRTGO_scr_2(Screen):
 class MDSRTGO_scr_3(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_3, self).__init__(**kwargs)
-        layout = FloatLayout()
+        layout = MDFloatLayout()
         btn = Button(text='SCREEN 1', on_release=self.screen_switch)
 
         layout.add_widget(btn)
@@ -157,7 +164,7 @@ class MDSRTGO_scr_3(Screen):
 class MDSRTGO_main(MDApp):
     title = "MDSANIMA RT GO v" + __version__
     def build(self):
-        theme_kivy(self, 'Orange', 'Blue', 'Dark')
+        theme_kivy(self, 'Gray', 'Blue', 'Dark')
         img = get_images()
         self.icon = resource_path(img[0])
         notification_icon = check_platform()
