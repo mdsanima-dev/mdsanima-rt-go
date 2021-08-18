@@ -20,6 +20,7 @@ from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.button import MDIconButton, MDFlatButton
 from kivymd.uix.label import MDLabel
 from kivymd.uix.toolbar import MDToolbar
+from kivymd.uix.textfield import MDTextField
 from kivy.clock import Clock
 from kivy.uix.button import Button
 from kivy.uix.image import Image
@@ -145,10 +146,21 @@ class MDSRTGO_scr_2(Screen):
             pos_hint={'center_x':.5, 'center_y':.5},
             allow_stretch=True)
 
-        toolbar = MDToolbar(
-            title='RENDER TIME CALCULATOR',
-            elevation=10,
-            pos_hint={'top':1})
+        lbl_top_name = MDLabel(
+            text='RENDER TIME CALCULATOR',
+            halign='center',
+            pos_hint={'center_x':0.5, 'center_y':0.96},
+            font_style='H6',
+            theme_text_color='Primary',
+            markup=True)
+
+        tfl_how_many_frame = MDTextField(
+            required=True,
+            hint_text='HOW MANY FRAMES',
+            helper_text_mode='on_error',
+            input_filter='int', max_text_length=6,
+            pos_hint={'center_x':.5, 'center_y':.9},
+            size_hint_x=0.8)
 
         btn_app_info = MDFlatButton(
             text="app info", size_hint=(None,None), size=(101,40),
@@ -166,7 +178,8 @@ class MDSRTGO_scr_2(Screen):
 
         # add widget layout
         layout.add_widget(bacground)
-        layout.add_widget(toolbar)
+        layout.add_widget(lbl_top_name)
+        layout.add_widget(tfl_how_many_frame)
         layout.add_widget(btn_app_info)
         layout.add_widget(lbl_info_version)
 
@@ -195,7 +208,7 @@ class MDSRTGO_scr_3(Screen):
 class MDSRTGO_main(MDApp):
     title = "MDSANIMA RT GO v" + __version__
     def build(self):
-        theme_kivy(self, 'Gray', 'Blue', 'Dark')
+        theme_kivy(self, 'Orange', 'Blue', 'Dark')
         img = get_images()
         self.icon = resource_path(img[0])
         notification_icon = check_platform()

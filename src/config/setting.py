@@ -9,10 +9,10 @@ from kivy.utils import platform
 
 def theme_kivy(
     self,
-    primary_pallete='Gray',
+    primary_pallete='Orange',
     accent_pallete='Blue',
     theme_style='Dark',
-    primary_hue='900'
+    primary_hue='500'
     ):
     self.theme_cls = ThemeManager()
     self.theme_cls.primary_palette = primary_pallete
