@@ -12,13 +12,13 @@ def theme_kivy(
     primary_pallete='Gray',
     accent_pallete='Blue',
     theme_style='Dark',
-    primary_dark_hue='A700'
+    primary_hue='900'
     ):
     self.theme_cls = ThemeManager()
     self.theme_cls.primary_palette = primary_pallete
     self.theme_cls.accent_pallete = accent_pallete
     self.theme_cls.theme_style = theme_style
-    self.theme_cls.primary_dark_hue = primary_dark_hue
+    self.theme_cls.primary_hue = primary_hue
 
 
 def check_platform():

@@ -10,5 +10,5 @@ logo_web = 'image/ic_launcher/web_hi_res_512.png'
 
 
 def get_images():
-    img_list = [app_icon, bg_welcome, bg_welcome, logo_web]
+    img_list = [app_icon, bg_welcome, bg_main, logo_web]
     return img_list
