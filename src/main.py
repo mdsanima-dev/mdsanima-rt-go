@@ -40,6 +40,12 @@ def resource_path(relative_path: str):
 
 
 class MDSRTGO_scr_1(Screen):
+    """
+    Welcome first screen change with timer to seconde screen main.
+
+    :param Screen: screen class kivy
+    :type Screen: class
+    """
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_1, self).__init__(**kwargs)
         layout = FloatLayout()
@@ -113,6 +119,12 @@ class MDSRTGO_scr_1(Screen):
 
 
 class MDSRTGO_scr_2(Screen):
+    """
+    Main second screen render time calculation.
+
+    :param Screen: screen class kivy
+    :type Screen: class
+    """
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_2, self).__init__(**kwargs)
         layout = FloatLayout()
