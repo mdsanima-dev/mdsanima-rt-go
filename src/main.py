@@ -247,18 +247,50 @@ class MDSRTGO_scr_2(Screen):
             text='RENDER TIME',
             halign='left',
             size_hint=(None,None), size=(170,40),
-            pos_hint={'center_x':0.24, 'center_y':0.5},
+            pos_hint={'center_x':0.24, 'center_y':0.48},
             font_style='Body2',
             theme_text_color='Hint')
 
-        lbl_render_time_result = MDLabel(
-            text='10 minutes',
+        lbl_render_start = MDLabel(
+            text='START RENDER',
             halign='left',
             size_hint=(None,None), size=(170,40),
-            pos_hint={'center_x':0.24, 'center_y':0.45},
+            pos_hint={'center_x':0.24, 'center_y':0.38},
+            font_style='Body2',
+            theme_text_color='Hint')
+
+        lbl_render_finish = MDLabel(
+            text='FINISH RENDER',
+            halign='left',
+            size_hint=(None,None), size=(170,40),
+            pos_hint={'center_x':0.24, 'center_y':0.28},
+            font_style='Body2',
+            theme_text_color='Hint')
+
+        lbl_render_time_val = MDLabel(
+            text='10 minutes',
+            halign='left',
+            size_hint=(None,None), size=(450,40),
+            pos_hint={'center_x':0.515, 'center_y':0.44},
             font_style='H5',
             theme_text_color='Custom',
             text_color = [.2510,.5529,.9765,1])
+
+        lbl_render_start_val = MDLabel(
+            text='2021-08-18  23:43:44  Wednesday',
+            halign='left',
+            size_hint=(None,None), size=(450,40),
+            pos_hint={'center_x':0.515, 'center_y':0.34},
+            font_style='H6',
+            theme_text_color='Secondary')
+
+        lbl_render_finish_val = MDLabel(
+            text='2021-08-18  23:53:44  Wednesday',
+            halign='left',
+            size_hint=(None,None), size=(450,40),
+            pos_hint={'center_x':0.515, 'center_y':0.24},
+            font_style='H6',
+            theme_text_color='Secondary')
 
         btn_app_info = MDFlatButton(
             text='app info', size_hint=(None,None), size=(101,40),
@@ -294,7 +326,13 @@ class MDSRTGO_scr_2(Screen):
         layout_box.add_widget(sld_seconds_val)
 
         layout.add_widget(lbl_render_time)
-        layout.add_widget(lbl_render_time_result)
+        layout.add_widget(lbl_render_time_val)
+
+        layout.add_widget(lbl_render_start)
+        layout.add_widget(lbl_render_start_val)
+
+        layout.add_widget(lbl_render_finish)
+        layout.add_widget(lbl_render_finish_val)
 
         layout.add_widget(btn_app_info)
         layout.add_widget(lbl_info_version)
