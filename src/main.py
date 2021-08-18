@@ -130,6 +130,14 @@ class MDSRTGO_scr_2(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_2, self).__init__(**kwargs)
         layout = MDFloatLayout()
+        img = get_images()
+
+        bacground = Image(
+            source=resource_path(img[2]), size=self.size, pos=self.pos,
+            size_hint_y=None, size_hint_x=None,
+            height='1849sp', width='1075sp',
+            pos_hint={'center_x':.5, 'center_y':.5},
+            allow_stretch=True)
 
         toolbar = MDToolbar(
             title='RENDER TIME CALCULATOR',
@@ -138,6 +146,7 @@ class MDSRTGO_scr_2(Screen):
 
         btn = Button(text='SCREEN 3', on_release=self.screen_switch)
 
+        layout.add_widget(bacground)
         layout.add_widget(toolbar)
         #layout.add_widget(btn)
         self.add_widget(layout)
