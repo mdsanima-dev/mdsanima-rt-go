@@ -132,6 +132,12 @@ class MDSRTGO_scr_2(Screen):
         layout = MDFloatLayout()
         img = get_images()
 
+        mdsanima_rt_go = (
+            "MDSANIMA RT GO "
+            + '[b][color=#329EF4]'
+            + "v" + str(__version__)
+            + '[/color][/b]')
+
         bacground = Image(
             source=resource_path(img[2]), size=self.size, pos=self.pos,
             size_hint_y=None, size_hint_x=None,
@@ -144,16 +150,32 @@ class MDSRTGO_scr_2(Screen):
             elevation=10,
             pos_hint={'top':1})
 
-        btn = Button(text='SCREEN 3', on_release=self.screen_switch)
+        btn_app_info = MDFlatButton(
+            text="app info", size_hint=(None,None), size=(100,40),
+            pos_hint={'x':0.410,'y':0.03},
+            on_release=self.screen_switch)
 
+        lbl_info_version = MDLabel(
+            text = mdsanima_rt_go,
+            halign = "center",
+            pos_hint = {'center_x':.5, 'center_y':.02},
+            font_style = "Caption",
+            theme_text_color = 'Secondary',
+            markup = True
+            )
+
+        # add widget layout
         layout.add_widget(bacground)
         layout.add_widget(toolbar)
-        #layout.add_widget(btn)
+        layout.add_widget(btn_app_info)
+        layout.add_widget(lbl_info_version)
+
+        # draw all widget
         self.add_widget(layout)
 
     def screen_switch(self, instance):
         self.manager.current = 'scr_3'
-        self.manager.transition.direction = 'left'
+        self.manager.transition.direction = 'up'
 
 
 class MDSRTGO_scr_3(Screen):
