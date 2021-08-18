@@ -56,6 +56,12 @@ and bumping verion in `__init__.py` and `spec_windows_version.rc` files:
 standard-version --skip.commit --skip.tag
 ```
 
+Only bump release as minor and check:
+
+```shell
+standard-version --skip.changelog --skip.commit --skip.tag --release-as minor --dry-run
+```
+
 Add bumping files and commiting:
 
 ```shell
