@@ -15,7 +15,7 @@ This is a base application build on `Windows` `Android` and `Linux`.
 All build is a debug mode.
 This is a not production build only for testing.
 
-Linux Ubunut 20.04:
+Linux Ubuntu 20.04:
 
 <img width="960" alt="mdsanima rt go-0 2 0-linux64-debug" src="https://user-images.githubusercontent.com/3817871/129733143-f477b77e-dfce-4ebc-8dd9-a7f67bd8df22.png">
 
@@ -49,7 +49,7 @@ os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
 ## Run `standard-version`
 
-First run `standard-version` on `wsl` to generate `changelog.md` and bumping
+First run `standard-version` on `wsl` to generate `CHANGELOG.md` and bumping
 verion in `__init__.py` and `spec_windows_version.rc` files:
 
 ```shell
