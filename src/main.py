@@ -1,5 +1,5 @@
 """
-Main application MDSANIMA-RT-GO
+Main application MDSANIMA RT GO
 """
 
 
