@@ -18,12 +18,14 @@ from config.setting import check_platform, theme_kivy
 
 from kivy.clock import Clock
 from kivy.uix.image import Image
+from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDFlatButton, MDIconButton
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.label import MDLabel
+from kivymd.uix.list import MDList
 from kivymd.uix.slider import MDSlider
 from kivymd.uix.textfield import MDTextField
 from plyer import notification
@@ -52,9 +54,11 @@ class MDSRTGO_scr_1(Screen):
     """
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_1, self).__init__(**kwargs)
+        # assigning function and class to variable
         layout = MDFloatLayout()
         img = get_images()
 
+        # initial variable
         mdsanima_rt_go = (
             'MDSANIMA RT GO '
             + '[b][color=#329EF4]'
@@ -62,6 +66,7 @@ class MDSRTGO_scr_1(Screen):
             + '[/color][/b]'
         )
 
+        # assigning class to variable
         background = Image(
             source=resource_path(img[1]), size=self.size, pos=self.pos,
             size_hint_y=None, size_hint_x=None,
@@ -136,16 +141,11 @@ class MDSRTGO_scr_2(Screen):
     """
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_2, self).__init__(**kwargs)
+        # assigning function and class to variable
         layout = MDFloatLayout()
         img = get_images()
 
-        layout_box = MDBoxLayout(
-            orientation='vertical',
-            padding=0, spacing=0,
-            size_hint_x=1, size_hint_y=0.3,
-            pos_hint={'center_x':0.5, 'top':0.8}
-        )
-
+        # initial variable
         mdsanima_rt_go = (
             'MDSANIMA RT GO '
             + '[b][color=#329EF4]'
@@ -153,6 +153,7 @@ class MDSRTGO_scr_2(Screen):
             + '[/color][/b]'
         )
 
+        # assigning class to variable
         background = Image(
             source=resource_path(img[2]), size=self.size, pos=self.pos,
             size_hint_y=None, size_hint_x=None,
@@ -164,8 +165,9 @@ class MDSRTGO_scr_2(Screen):
         lbl_top_name = MDLabel(
             text='RENDER TIME CALCULATOR',
             halign='center',
+            size_hint=(None,None), size=(450,40),
             pos_hint={'center_x':0.5, 'center_y':0.96},
-            font_style='H6',
+            font_style='H5',
             theme_text_color='Primary',
             markup=True
         )
@@ -319,7 +321,7 @@ class MDSRTGO_scr_2(Screen):
         )
 
         btn_app_info = MDFlatButton(
-            text='app info', size_hint=(None,None), size=(101,40),
+            text='APP INFO', size_hint=(None,None), size=(101,40),
             pos_hint={'x':0.416,'y':0.03},
             on_release=self.screen_switch
         )
@@ -331,6 +333,13 @@ class MDSRTGO_scr_2(Screen):
             font_style='Caption',
             theme_text_color='Secondary',
             markup=True
+        )
+
+        layout_box = MDBoxLayout(
+            orientation='vertical',
+            padding=0, spacing=0,
+            size_hint_x=1, size_hint_y=0.3,
+            pos_hint={'center_x':0.5, 'top':0.8}
         )
 
         # add widget layout
@@ -383,14 +392,11 @@ class MDSRTGO_scr_3(Screen):
     """
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_3, self).__init__(**kwargs)
+        # assigning function and class to variable
         layout = MDFloatLayout()
         img = get_images()
 
-        layout_box = MDBoxLayout(
-            padding='60sp',
-            orientation='vertical'
-        )
-
+        # initial variable
         mdsanima_rt_go = (
             'MDSANIMA RT GO '
             + '[b][color=#329EF4]'
@@ -398,6 +404,7 @@ class MDSRTGO_scr_3(Screen):
             + '[/color][/b]'
         )
 
+        # assigning class to variable
         background = Image(
             source=resource_path(img[2]), size=self.size, pos=self.pos,
             size_hint_y=None, size_hint_x=None,
@@ -416,6 +423,16 @@ class MDSRTGO_scr_3(Screen):
             md_bg_color=[0,0,0,0]
         )
 
+        lbl_top_name = MDLabel(
+            text='APP INFORMATION',
+            halign='left',
+            size_hint=(None,None), size=(450,40),
+            pos_hint={'center_x':0.56, 'center_y':0.96},
+            font_style='H5',
+            theme_text_color='Primary',
+            markup=True
+        )
+
         lbl_info_version = MDLabel(
             text=mdsanima_rt_go,
             halign='center',
@@ -425,17 +442,194 @@ class MDSRTGO_scr_3(Screen):
             markup=True
         )
 
+        img_logo_mdsanima = Image(
+            source=resource_path(img[3]), size=self.size, pos=self.pos,
+            size_hint_y=None,
+            width='300sp',
+            allow_stretch=True,
+        )
+
         # add widget layout
         layout.add_widget(background)
         layout.add_widget(btn_back_to_main)
+        layout.add_widget(lbl_top_name)
         layout.add_widget(lbl_info_version)
 
         # draw all widget
         self.add_widget(layout)
 
+        # assigning class to variable
+        layout_box = MDBoxLayout(padding=[0,60,0,35], orientation='vertical')
+        scroll_view = ScrollView()
+        self.list_view = MDList()
+
+        # add widget layout
+        layout_box.add_widget(scroll_view)
+        scroll_view.add_widget(self.list_view)
+
+        # assigning function to variable brake labels
+        break_info = self.lbl_info_break
+
+        # add widget layout
+        self.lbl_info_top('MDSANIMA RT GO APP')
+        self.lbl_info_bottom('Created by Marcin Różewski')
+        break_info()
+        self.lbl_info_top('GIVE ME A FEEDBACK')
+        self.lbl_info_bottom('admin@app.mdsanima.com')
+        break_info()
+        self.lbl_info_top('DEVELOPMENT')
+        self.lbl_info_bottom('We developing these application for you!')
+        self.lbl_info_bottom('1.5K lines of code it written by MDSANIMA')
+        break_info()
+        self.list_view.add_widget(img_logo_mdsanima)
+        break_info()
+        self.lbl_info_top('APP INFORMATION')
+        self.lbl_info_app('app name', 'MDSANIMA RT GO')
+        self.lbl_info_app('license', 'Apache - 2.0')
+        self.lbl_info_app('source code on', 'GitHub')
+        self.lbl_info_app('release version', 'v' + __version__)
+        self.lbl_info_app('release on', 'August 19, 2021')
+        self.lbl_info_app('language', 'Python v3.8.6 64-bit')
+        self.lbl_info_app('framework', 'Kivy v2.0.0')
+        self.lbl_info_app(' ', 'KivyMD v0.104.2')
+        self.lbl_info_app('cloud provider', 'Google Cloud Platform', 'Hint')
+        self.lbl_info_app(' ', 'Firebase Realtime Database', 'Hint')
+        self.lbl_info_app(' ', 'Firebase Storage', 'Hint')
+        self.lbl_info_app('distribution', 'Cross Platform')
+        self.lbl_info_app(' ', 'Microsoft Windows 10')
+        self.lbl_info_app(' ', 'Linux Ubuntu 20.04')
+        self.lbl_info_app(' ', 'Android API 21 - 29')
+        self.lbl_info_app(' ', 'macOSX - Coming Soon', 'Hint')
+        self.lbl_info_app(' ', 'iOS - Coming Soon', 'Hint')
+        break_info()
+
+        # initial variable info text
+        info_vfx_studio = (
+            "Let me introduce myself. I'm in charge of head of VFX and Game "
+            + "Development for MDSANIMA. We've been working on VFX and Game "
+            + "Development for the past 10 years now."
+            + "\n\n"
+            + "We love Houdini Sidefx so much. We create visual effect like "
+            + "smoke, water, cloth simulation, procedural 3D modeling and "
+            + "much more we do with these software. If you want to, you can "
+            + "make digital asset for Unreal Engine 4 tweak parameter of your "
+            + "asset directly in game engine. In this way, you can make "
+            + "perfect game with only this two excellent software."
+            + "\n\n"
+            + "Of course we love Blender too. In these software, we make "
+            + "3D models, sculpt and render. Also we have experienced on "
+            + "Substance Painter UDIM workflow, Zbrush, Coat 3D, Nuke, Black "
+            + "Magic Davinci Resolve, Black Magic Fusion and many many more "
+            + "great software to do making games, cinematic, commercial, as "
+            + "well as app development."
+            + "\n\n"
+            + "We recently discovered a great software to do rendering and "
+            + "layout 3d stuff called Clarisse iFX. This software can handle "
+            + "off the limit the biggest 3D scenes ever, without any display "
+            + "problems. Handle over 10 trylion polygon and no more lagging "
+            + "on 3D viewport, no more LOD - level of detail."
+        )
+
+        info_app_devs = (
+            "Our studio also experienced in App Development. We're "
+            + "programming in Python, VEX, C#, Java, PHP, HTML and SQL. "
+            + "Development Framework Xamarin, Kivy, KivyMD, PySide2, PyQt5 "
+            + "and more. Our favorite programing software is Visual Studio "
+            + "Code work with GIT."
+            + "\n\n"
+            + "We'r expanded our experience in Cloud Computing like Linux "
+            + "Ubuntu Spot Instance in AWS, S3, Microsoft Azure, Oracle, "
+            + "Google Cloud Platform with Realtime Database in Firebase."
+            + "\n\n"
+            + "We really like command line rendering, so much fun!"
+        )
+
+        # add widget layout
+        self.lbl_info_top('MDSANIMA VFX Studio')
+        self.lbl_info_mdsanima(info_vfx_studio, 'justify', '515sp')
+        break_info()
+        self.lbl_info_top('APP DEVS')
+        self.lbl_info_mdsanima(info_app_devs, 'justify', '250sp')
+        break_info()
+        self.lbl_info_top('OUR CLIENTS')
+        self.lbl_info_bottom('admin@app.mdsanima.com')
+        break_info()
+        self.lbl_info_top('ASCII ART')
+        self.lbl_info_bottom('admin@app.mdsanima.com')
+
+        # draw all widget
+        self.add_widget(layout_box)
+
     def screen_switch(self, instance):
         self.manager.current = 'scr_2'
         self.manager.transition.direction = 'right'
+
+    def lbl_info_top(self, text_info: str):
+        info_top = MDLabel(
+            text=text_info,
+            halign='center',
+            height='15sp',
+            #font_style='H6',
+            size_hint_y=None,
+            theme_text_color='Custom',
+            text_color=[.2510,.5529,.9765,1]
+        )
+        self.list_view.add_widget(info_top)
+
+    def lbl_info_bottom(self, text_info: str, height: str='30sp'):
+        info_bottom = MDLabel(
+            text=text_info,
+            halign='center',
+            height=height,
+            size_hint_y=None,
+            theme_text_color='Secondary'
+        )
+        self.list_view.add_widget(info_bottom)
+
+    def lbl_info_break(self):
+        info_break = MDLabel(text=' ', height='30sp', size_hint_y=None)
+        self.list_view.add_widget(info_break)
+
+    def lbl_info_app(self, l_text: str, r_text: str, r_color: str='Secondary'):
+        layout_box = MDBoxLayout(
+            orientation='horizontal',
+            size_hint_x=None, size_hint_y=None,
+            width='450sp', height='30sp'
+        )
+        lbl_left = MDLabel(
+            text=l_text,
+            halign='right',
+            size_hint_x=None, size_hint_y=None,
+            width='200sp', height='30sp',
+            theme_text_color='Hint'
+        )
+        lbl_middle = MDLabel(
+            text=' ',
+            halign = 'center',
+            size_hint_x=None, size_hint_y=None,
+            width='10sp', height='30sp'
+        )
+        lbl_right = MDLabel(
+            text=r_text,
+            size_hint_y=None,
+            height='30sp',
+            theme_text_color=r_color
+        )
+        layout_box.add_widget(lbl_left)
+        layout_box.add_widget(lbl_middle)
+        layout_box.add_widget(lbl_right)
+        self.list_view.add_widget(layout_box)
+
+    def lbl_info_mdsanima(self, text_info: str, halign: str, height: str):
+        info_mdsanima = MDLabel(
+            text=text_info,
+            halign=halign,
+            width='512sp', height=height,
+            padding_x=40, line_height=1.2,
+            size_hint_x=None, size_hint_y=None,
+            theme_text_color='Secondary'
+        )
+        self.list_view.add_widget(info_mdsanima)
 
 
 class MDSRTGO_main(MDApp):
