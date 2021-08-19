@@ -45,6 +45,34 @@ def resource_path(relative_path: str):
     return os.path.join(base_path, relative_path)
 
 
+class MDSRTGO_layout(Screen):
+    """
+    Class method for `label` or other function when used multiple times.
+    """
+    def __init__(self, **kwargs):
+        super(MDSRTGO_layout, self).__init__(**kwargs)
+        pass
+
+    def lbl_info_version(self):
+        mdsanima_rt_go = (
+            'MDSANIMA RT GO '
+            + '[b][color=#329EF4]'
+            + 'v' + str(__version__)
+            + '[/color][/b]'
+        )
+        layout = MDFloatLayout()
+        info_version = MDLabel(
+            text=mdsanima_rt_go,
+            halign='center',
+            pos_hint={'center_x':0.5, 'center_y':0.02},
+            font_style='Caption',
+            theme_text_color='Secondary',
+            markup=True
+        )
+        layout.add_widget(info_version)
+        self.add_widget(layout)
+
+
 class MDSRTGO_scr_1(Screen):
     """
     Welcome first screen change with timer to seconde screen main.
@@ -55,16 +83,9 @@ class MDSRTGO_scr_1(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_1, self).__init__(**kwargs)
         # assigning function and class to variable
+        layout_mds = MDSRTGO_layout()
         layout = MDFloatLayout()
         img = get_images()
-
-        # initial variable
-        mdsanima_rt_go = (
-            'MDSANIMA RT GO '
-            + '[b][color=#329EF4]'
-            + 'v' + str(__version__)
-            + '[/color][/b]'
-        )
 
         # assigning class to variable
         background = Image(
@@ -94,24 +115,18 @@ class MDSRTGO_scr_1(Screen):
             theme_text_color='Secondary'
         )
 
-        lbl_info_version = MDLabel(
-            text=mdsanima_rt_go,
-            halign='center',
-            pos_hint={'center_x':0.5, 'center_y':0.02},
-            font_style='Caption',
-            theme_text_color='Secondary',
-            markup=True
-        )
-
         # add widget layout
         layout.add_widget(background)
         layout.add_widget(btn_go_rendering)
         layout.add_widget(btn_logo_mdsanima)
         layout.add_widget(lbl_click_me)
-        layout.add_widget(lbl_info_version)
 
         # draw all widget
         self.add_widget(layout)
+
+        # draw info version
+        layout_mds.lbl_info_version()
+        self.add_widget(layout_mds)
 
         # switch screen after 30 seconds
         Clock.schedule_once(self.clk_screen, 30)
@@ -142,16 +157,9 @@ class MDSRTGO_scr_2(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_2, self).__init__(**kwargs)
         # assigning function and class to variable
+        layout_mds = MDSRTGO_layout()
         layout = MDFloatLayout()
         img = get_images()
-
-        # initial variable
-        mdsanima_rt_go = (
-            'MDSANIMA RT GO '
-            + '[b][color=#329EF4]'
-            + 'v' + str(__version__)
-            + '[/color][/b]'
-        )
 
         # assigning class to variable
         background = Image(
@@ -326,15 +334,6 @@ class MDSRTGO_scr_2(Screen):
             on_release=self.screen_switch
         )
 
-        lbl_info_version = MDLabel(
-            text=mdsanima_rt_go,
-            halign='center',
-            pos_hint={'center_x':0.5, 'center_y':0.02},
-            font_style='Caption',
-            theme_text_color='Secondary',
-            markup=True
-        )
-
         layout_box = MDBoxLayout(
             orientation='vertical',
             padding=0, spacing=0,
@@ -372,11 +371,14 @@ class MDSRTGO_scr_2(Screen):
         layout.add_widget(lbl_render_finish_val)
 
         layout.add_widget(btn_app_info)
-        layout.add_widget(lbl_info_version)
 
         # draw all widget
         self.add_widget(layout)
         self.add_widget(layout_box)
+
+        # draw info version
+        layout_mds.lbl_info_version()
+        self.add_widget(layout_mds)
 
     def screen_switch(self, instance):
         self.manager.current = 'scr_3'
@@ -393,16 +395,9 @@ class MDSRTGO_scr_3(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_3, self).__init__(**kwargs)
         # assigning function and class to variable
+        layout_mds = MDSRTGO_layout()
         layout = MDFloatLayout()
         img = get_images()
-
-        # initial variable
-        mdsanima_rt_go = (
-            'MDSANIMA RT GO '
-            + '[b][color=#329EF4]'
-            + 'v' + str(__version__)
-            + '[/color][/b]'
-        )
 
         # assigning class to variable
         background = Image(
@@ -433,15 +428,6 @@ class MDSRTGO_scr_3(Screen):
             markup=True
         )
 
-        lbl_info_version = MDLabel(
-            text=mdsanima_rt_go,
-            halign='center',
-            pos_hint={'center_x':0.5, 'center_y':0.02},
-            font_style='Caption',
-            theme_text_color='Secondary',
-            markup=True
-        )
-
         img_logo_mdsanima = Image(
             source=resource_path(img[3]),
             size=(211,211), pos=self.pos,
@@ -460,7 +446,6 @@ class MDSRTGO_scr_3(Screen):
         layout.add_widget(background)
         layout.add_widget(btn_back_to_main)
         layout.add_widget(lbl_top_name)
-        layout.add_widget(lbl_info_version)
 
         # draw all widget
         self.add_widget(layout)
@@ -553,10 +538,10 @@ class MDSRTGO_scr_3(Screen):
 
         # add widget layout
         self.lbl_info_top('MDSANIMA VFX Studio')
-        self.lbl_info_mdsanima(info_vfx_studio, 'justify', '515sp')
+        self.lbl_info_mdsanima(info_vfx_studio, 'justify', '520sp')
         break_info()
         self.lbl_info_top('APP DEVS')
-        self.lbl_info_mdsanima(info_app_devs, 'justify', '250sp')
+        self.lbl_info_mdsanima(info_app_devs, 'justify', '255sp')
         break_info()
         self.lbl_info_top('OUR CLIENTS')
         self.lbl_info_bottom('admin@app.mdsanima.com')
@@ -565,6 +550,10 @@ class MDSRTGO_scr_3(Screen):
 
         # draw all widget
         self.add_widget(layout_box)
+
+        # draw info version
+        layout_mds.lbl_info_version()
+        self.add_widget(layout_mds)
 
     def screen_switch(self, instance):
         self.manager.current = 'scr_2'
