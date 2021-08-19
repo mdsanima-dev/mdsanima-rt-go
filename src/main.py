@@ -443,9 +443,16 @@ class MDSRTGO_scr_3(Screen):
         )
 
         img_logo_mdsanima = Image(
-            source=resource_path(img[3]), size=self.size, pos=self.pos,
+            source=resource_path(img[3]),
+            size=(211,211), pos=self.pos,
             size_hint_y=None,
-            width='300sp',
+            allow_stretch=True,
+        )
+
+        img_ascii_mdsanima = Image(
+            source=resource_path(img[4]),
+            size=(422,422), pos=self.pos,
+            size_hint_y=None,
             allow_stretch=True,
         )
 
@@ -554,8 +561,7 @@ class MDSRTGO_scr_3(Screen):
         self.lbl_info_top('OUR CLIENTS')
         self.lbl_info_bottom('admin@app.mdsanima.com')
         break_info()
-        self.lbl_info_top('ASCII ART')
-        self.lbl_info_bottom('admin@app.mdsanima.com')
+        self.list_view.add_widget(img_ascii_mdsanima)
 
         # draw all widget
         self.add_widget(layout_box)
