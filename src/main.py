@@ -54,6 +54,9 @@ class MDSRTGO_layout(Screen):
         pass
 
     def lbl_info_version(self):
+        """
+        Label app name and version on the bottom screen.
+        """
         mdsanima_rt_go = (
             'MDSANIMA RT GO '
             + '[b][color=#329EF4]'
@@ -72,6 +75,24 @@ class MDSRTGO_layout(Screen):
         layout.add_widget(info_version)
         self.add_widget(layout)
 
+    def img_background(self, image: str):
+        """
+        Background images for screen.
+
+        :param image: path image to use
+        :type image: str
+        """
+        layout = MDFloatLayout()
+        background = Image(
+            source=resource_path(image), size=self.size, pos=self.pos,
+            size_hint_y=None, size_hint_x=None,
+            height='1849sp', width='1075sp',
+            pos_hint={'center_x':0.5, 'center_y':0.5},
+            allow_stretch=True
+        )
+        layout.add_widget(background)
+        self.add_widget(layout)
+
 
 class MDSRTGO_scr_1(Screen):
     """
@@ -88,14 +109,6 @@ class MDSRTGO_scr_1(Screen):
         img = get_images()
 
         # assigning class to variable
-        background = Image(
-            source=resource_path(img[1]), size=self.size, pos=self.pos,
-            size_hint_y=None, size_hint_x=None,
-            height='1849sp', width='1075sp',
-            pos_hint={'center_x':0.5, 'center_y':0.5},
-            allow_stretch=True
-        )
-
         btn_go_rendering = MDFlatButton(
             text='GO RENDERING!', on_press=self.screen_switch,
             pos_hint={'center_x':0.5, 'center_y':0.6},
@@ -116,17 +129,17 @@ class MDSRTGO_scr_1(Screen):
         )
 
         # add widget layout
-        layout.add_widget(background)
         layout.add_widget(btn_go_rendering)
         layout.add_widget(btn_logo_mdsanima)
         layout.add_widget(lbl_click_me)
 
-        # draw all widget
-        self.add_widget(layout)
-
-        # draw info version
+        # draw info version and background
+        layout_mds.img_background(img[1])
         layout_mds.lbl_info_version()
         self.add_widget(layout_mds)
+
+        # draw all widget
+        self.add_widget(layout)
 
         # switch screen after 30 seconds
         Clock.schedule_once(self.clk_screen, 30)
@@ -162,14 +175,6 @@ class MDSRTGO_scr_2(Screen):
         img = get_images()
 
         # assigning class to variable
-        background = Image(
-            source=resource_path(img[2]), size=self.size, pos=self.pos,
-            size_hint_y=None, size_hint_x=None,
-            height='1849sp', width='1075sp',
-            pos_hint={'center_x':0.5, 'center_y':0.5},
-            allow_stretch=True
-        )
-
         lbl_top_name = MDLabel(
             text='RENDER TIME CALCULATOR',
             halign='center',
@@ -342,8 +347,6 @@ class MDSRTGO_scr_2(Screen):
         )
 
         # add widget layout
-        layout.add_widget(background)
-
         layout.add_widget(lbl_top_name)
         layout.add_widget(tfl_how_many_frame)
 
@@ -372,13 +375,14 @@ class MDSRTGO_scr_2(Screen):
 
         layout.add_widget(btn_app_info)
 
+        # draw info version and background
+        layout_mds.img_background(img[2])
+        layout_mds.lbl_info_version()
+        self.add_widget(layout_mds)
+
         # draw all widget
         self.add_widget(layout)
         self.add_widget(layout_box)
-
-        # draw info version
-        layout_mds.lbl_info_version()
-        self.add_widget(layout_mds)
 
     def screen_switch(self, instance):
         self.manager.current = 'scr_3'
@@ -400,14 +404,6 @@ class MDSRTGO_scr_3(Screen):
         img = get_images()
 
         # assigning class to variable
-        background = Image(
-            source=resource_path(img[2]), size=self.size, pos=self.pos,
-            size_hint_y=None, size_hint_x=None,
-            height='1849sp', width='1075sp',
-            pos_hint={'center_x':0.5, 'center_y':0.5},
-            allow_stretch=True
-        )
-
         btn_back_to_main = MDIconButton(
             on_press=self.screen_switch,
             font_size='45sp',
@@ -443,9 +439,13 @@ class MDSRTGO_scr_3(Screen):
         )
 
         # add widget layout
-        layout.add_widget(background)
         layout.add_widget(btn_back_to_main)
         layout.add_widget(lbl_top_name)
+
+        # draw info version and background
+        layout_mds.img_background(img[2])
+        layout_mds.lbl_info_version()
+        self.add_widget(layout_mds)
 
         # draw all widget
         self.add_widget(layout)
@@ -550,10 +550,6 @@ class MDSRTGO_scr_3(Screen):
 
         # draw all widget
         self.add_widget(layout_box)
-
-        # draw info version
-        layout_mds.lbl_info_version()
-        self.add_widget(layout_mds)
 
     def screen_switch(self, instance):
         self.manager.current = 'scr_2'
