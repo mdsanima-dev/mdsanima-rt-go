@@ -451,7 +451,7 @@ class MDSRTGO_scr_3(Screen):
 
         # assigning class to variable
         img_logo_mdsanima = Image(
-            source=resource_path(img[3]),
+            source=resource_path(img[5]),
             size=(211,211), pos=self.pos,
             size_hint_y=None,
             allow_stretch=True,
