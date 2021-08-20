@@ -53,6 +53,40 @@ class MDSRTGO_layout(Screen):
         super(MDSRTGO_layout, self).__init__(**kwargs)
         pass
 
+    def lbl_top(self, icon: str, ic_on_press: None, lbl_text: str):
+        """
+        Top nawigation text and icons.
+
+        :param icon: icon name
+        :type icon: str
+        :param ic_on_press: function to switch screen or other features
+        :type ic_on_press: None
+        :param lbl_text: label text on the top nawigation
+        :type lbl_text: str
+        """
+        layout = MDFloatLayout()
+        back_to_main = MDIconButton(
+            on_press=ic_on_press,
+            font_size='45sp',
+            pos_hint={'center_x':0.07, 'center_y':0.96},
+            icon=icon,
+            theme_text_color='Custom',
+            text_color=[.2510,.5529,.9765,1],
+            md_bg_color=[0,0,0,0]
+        )
+        top_name = MDLabel(
+            text=lbl_text,
+            halign='left',
+            size_hint=(None,None), size=(450,40),
+            pos_hint={'center_x':0.56, 'center_y':0.96},
+            font_style='H5',
+            theme_text_color='Primary',
+            markup=True
+        )
+        layout.add_widget(back_to_main)
+        layout.add_widget(top_name)
+        self.add_widget(layout)
+
     def lbl_info_version(self):
         """
         Label app name and version on the bottom screen.
@@ -175,16 +209,6 @@ class MDSRTGO_scr_2(Screen):
         img = get_images()
 
         # assigning class to variable
-        lbl_top_name = MDLabel(
-            text='RENDER TIME CALCULATOR',
-            halign='center',
-            size_hint=(None,None), size=(450,40),
-            pos_hint={'center_x':0.5, 'center_y':0.96},
-            font_style='H5',
-            theme_text_color='Primary',
-            markup=True
-        )
-
         tfl_how_many_frame = MDTextField(
             required=True,
             hint_text='NUMBER OF FRAMES',
@@ -347,7 +371,6 @@ class MDSRTGO_scr_2(Screen):
         )
 
         # add widget layout
-        layout.add_widget(lbl_top_name)
         layout.add_widget(tfl_how_many_frame)
 
         layout.add_widget(lbl_render_frame)
@@ -375,8 +398,10 @@ class MDSRTGO_scr_2(Screen):
 
         layout.add_widget(btn_app_info)
 
-        # draw info version and background
+        # draw info version background top name
         layout_mds.img_background(img[2])
+        rt_calc = 'RENDER TIME CALCULATOR'
+        layout_mds.lbl_top('menu', self.screen_switch, rt_calc)
         layout_mds.lbl_info_version()
         self.add_widget(layout_mds)
 
@@ -404,26 +429,6 @@ class MDSRTGO_scr_3(Screen):
         img = get_images()
 
         # assigning class to variable
-        btn_back_to_main = MDIconButton(
-            on_press=self.screen_switch,
-            font_size='45sp',
-            pos_hint={'center_x':0.07, 'center_y':0.96},
-            icon='arrow-left',
-            theme_text_color='Custom',
-            text_color=[.2510,.5529,.9765,1],
-            md_bg_color=[0,0,0,0]
-        )
-
-        lbl_top_name = MDLabel(
-            text='APP INFORMATION',
-            halign='left',
-            size_hint=(None,None), size=(450,40),
-            pos_hint={'center_x':0.56, 'center_y':0.96},
-            font_style='H5',
-            theme_text_color='Primary',
-            markup=True
-        )
-
         img_logo_mdsanima = Image(
             source=resource_path(img[3]),
             size=(211,211), pos=self.pos,
@@ -438,12 +443,9 @@ class MDSRTGO_scr_3(Screen):
             allow_stretch=True,
         )
 
-        # add widget layout
-        layout.add_widget(btn_back_to_main)
-        layout.add_widget(lbl_top_name)
-
-        # draw info version and background
+        # draw info version background top name
         layout_mds.img_background(img[2])
+        layout_mds.lbl_top('arrow-left', self.screen_switch, 'APP INFORMATION')
         layout_mds.lbl_info_version()
         self.add_widget(layout_mds)
 
