@@ -26,6 +26,7 @@ from kivymd.uix.button import MDFlatButton, MDIconButton
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.label import MDLabel
 from kivymd.uix.list import MDList
+from kivymd.uix.progressbar import MDProgressBar
 from kivymd.uix.slider import MDSlider
 from kivymd.uix.textfield import MDTextField
 from plyer import notification
@@ -162,10 +163,30 @@ class MDSRTGO_scr_1(Screen):
             theme_text_color='Secondary'
         )
 
+        pgb_progress_top = MDProgressBar(
+            type='determinate', reversed=True,
+            pos_hint={'center_x':0.5, 'center_y':1},
+            running_duration=28,
+            catching_duration=1
+        )
+
+        pgb_progress_bot = MDProgressBar(
+            type='determinate',
+            pos_hint={'center_x':0.5, 'center_y':0.005},
+            running_duration=1,
+            catching_duration=1.5
+        )
+
         # add widget layout
         layout.add_widget(btn_go_rendering)
         layout.add_widget(btn_logo_mdsanima)
         layout.add_widget(lbl_click_me)
+
+        # add progress loading animation
+        pgb_progress_top.start()
+        pgb_progress_bot.start()
+        layout.add_widget(pgb_progress_top)
+        layout.add_widget(pgb_progress_bot)
 
         # draw info version and background
         layout_mds.img_background(img[1])
