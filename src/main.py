@@ -45,6 +45,89 @@ def resource_path(relative_path: str):
     return os.path.join(base_path, relative_path)
 
 
+class MDSRTGO_layout(Screen):
+    """
+    Class method for `label` or other function when used multiple times.
+    """
+    def __init__(self, **kwargs):
+        super(MDSRTGO_layout, self).__init__(**kwargs)
+        pass
+
+    def lbl_top(self, icon: str, ic_on_press: None, lbl_text: str):
+        """
+        Top nawigation text and icons.
+
+        :param icon: icon name
+        :type icon: str
+        :param ic_on_press: function to switch screen or other features
+        :type ic_on_press: None
+        :param lbl_text: label text on the top nawigation
+        :type lbl_text: str
+        """
+        layout = MDFloatLayout()
+        back_to_main = MDIconButton(
+            on_press=ic_on_press,
+            font_size='45sp',
+            pos_hint={'center_x':0.07, 'center_y':0.96},
+            icon=icon,
+            theme_text_color='Custom',
+            text_color=[.2510,.5529,.9765,1],
+            md_bg_color=[0,0,0,0]
+        )
+        top_name = MDLabel(
+            text=lbl_text,
+            halign='left',
+            size_hint=(None,None), size=(450,40),
+            pos_hint={'center_x':0.56, 'center_y':0.96},
+            font_style='H5',
+            theme_text_color='Primary',
+            markup=True
+        )
+        layout.add_widget(back_to_main)
+        layout.add_widget(top_name)
+        self.add_widget(layout)
+
+    def lbl_info_version(self):
+        """
+        Label app name and version on the bottom screen.
+        """
+        mdsanima_rt_go = (
+            'MDSANIMA RT GO '
+            + '[b][color=#329EF4]'
+            + 'v' + str(__version__)
+            + '[/color][/b]'
+        )
+        layout = MDFloatLayout()
+        info_version = MDLabel(
+            text=mdsanima_rt_go,
+            halign='center',
+            pos_hint={'center_x':0.5, 'center_y':0.02},
+            font_style='Caption',
+            theme_text_color='Secondary',
+            markup=True
+        )
+        layout.add_widget(info_version)
+        self.add_widget(layout)
+
+    def img_background(self, image: str):
+        """
+        Background images for screen.
+
+        :param image: path image to use
+        :type image: str
+        """
+        layout = MDFloatLayout()
+        background = Image(
+            source=resource_path(image), size=self.size, pos=self.pos,
+            size_hint_y=None, size_hint_x=None,
+            height='1849sp', width='1075sp',
+            pos_hint={'center_x':0.5, 'center_y':0.5},
+            allow_stretch=True
+        )
+        layout.add_widget(background)
+        self.add_widget(layout)
+
+
 class MDSRTGO_scr_1(Screen):
     """
     Welcome first screen change with timer to seconde screen main.
@@ -55,26 +138,11 @@ class MDSRTGO_scr_1(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_1, self).__init__(**kwargs)
         # assigning function and class to variable
+        layout_mds = MDSRTGO_layout()
         layout = MDFloatLayout()
         img = get_images()
 
-        # initial variable
-        mdsanima_rt_go = (
-            'MDSANIMA RT GO '
-            + '[b][color=#329EF4]'
-            + 'v' + str(__version__)
-            + '[/color][/b]'
-        )
-
         # assigning class to variable
-        background = Image(
-            source=resource_path(img[1]), size=self.size, pos=self.pos,
-            size_hint_y=None, size_hint_x=None,
-            height='1849sp', width='1075sp',
-            pos_hint={'center_x':0.5, 'center_y':0.5},
-            allow_stretch=True
-        )
-
         btn_go_rendering = MDFlatButton(
             text='GO RENDERING!', on_press=self.screen_switch,
             pos_hint={'center_x':0.5, 'center_y':0.6},
@@ -94,21 +162,15 @@ class MDSRTGO_scr_1(Screen):
             theme_text_color='Secondary'
         )
 
-        lbl_info_version = MDLabel(
-            text=mdsanima_rt_go,
-            halign='center',
-            pos_hint={'center_x':0.5, 'center_y':0.02},
-            font_style='Caption',
-            theme_text_color='Secondary',
-            markup=True
-        )
-
         # add widget layout
-        layout.add_widget(background)
         layout.add_widget(btn_go_rendering)
         layout.add_widget(btn_logo_mdsanima)
         layout.add_widget(lbl_click_me)
-        layout.add_widget(lbl_info_version)
+
+        # draw info version and background
+        layout_mds.img_background(img[1])
+        layout_mds.lbl_info_version()
+        self.add_widget(layout_mds)
 
         # draw all widget
         self.add_widget(layout)
@@ -142,36 +204,11 @@ class MDSRTGO_scr_2(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_2, self).__init__(**kwargs)
         # assigning function and class to variable
+        layout_mds = MDSRTGO_layout()
         layout = MDFloatLayout()
         img = get_images()
 
-        # initial variable
-        mdsanima_rt_go = (
-            'MDSANIMA RT GO '
-            + '[b][color=#329EF4]'
-            + 'v' + str(__version__)
-            + '[/color][/b]'
-        )
-
         # assigning class to variable
-        background = Image(
-            source=resource_path(img[2]), size=self.size, pos=self.pos,
-            size_hint_y=None, size_hint_x=None,
-            height='1849sp', width='1075sp',
-            pos_hint={'center_x':0.5, 'center_y':0.5},
-            allow_stretch=True
-        )
-
-        lbl_top_name = MDLabel(
-            text='RENDER TIME CALCULATOR',
-            halign='center',
-            size_hint=(None,None), size=(450,40),
-            pos_hint={'center_x':0.5, 'center_y':0.96},
-            font_style='H5',
-            theme_text_color='Primary',
-            markup=True
-        )
-
         tfl_how_many_frame = MDTextField(
             required=True,
             hint_text='NUMBER OF FRAMES',
@@ -326,15 +363,6 @@ class MDSRTGO_scr_2(Screen):
             on_release=self.screen_switch
         )
 
-        lbl_info_version = MDLabel(
-            text=mdsanima_rt_go,
-            halign='center',
-            pos_hint={'center_x':0.5, 'center_y':0.02},
-            font_style='Caption',
-            theme_text_color='Secondary',
-            markup=True
-        )
-
         layout_box = MDBoxLayout(
             orientation='vertical',
             padding=0, spacing=0,
@@ -343,9 +371,6 @@ class MDSRTGO_scr_2(Screen):
         )
 
         # add widget layout
-        layout.add_widget(background)
-
-        layout.add_widget(lbl_top_name)
         layout.add_widget(tfl_how_many_frame)
 
         layout.add_widget(lbl_render_frame)
@@ -372,7 +397,13 @@ class MDSRTGO_scr_2(Screen):
         layout.add_widget(lbl_render_finish_val)
 
         layout.add_widget(btn_app_info)
-        layout.add_widget(lbl_info_version)
+
+        # draw info version background top name
+        layout_mds.img_background(img[2])
+        rt_calc = 'RENDER TIME CALCULATOR'
+        layout_mds.lbl_top('menu', self.screen_switch, rt_calc)
+        layout_mds.lbl_info_version()
+        self.add_widget(layout_mds)
 
         # draw all widget
         self.add_widget(layout)
@@ -393,55 +424,11 @@ class MDSRTGO_scr_3(Screen):
     def __init__(self, **kwargs):
         super(MDSRTGO_scr_3, self).__init__(**kwargs)
         # assigning function and class to variable
+        layout_mds = MDSRTGO_layout()
         layout = MDFloatLayout()
         img = get_images()
 
-        # initial variable
-        mdsanima_rt_go = (
-            'MDSANIMA RT GO '
-            + '[b][color=#329EF4]'
-            + 'v' + str(__version__)
-            + '[/color][/b]'
-        )
-
         # assigning class to variable
-        background = Image(
-            source=resource_path(img[2]), size=self.size, pos=self.pos,
-            size_hint_y=None, size_hint_x=None,
-            height='1849sp', width='1075sp',
-            pos_hint={'center_x':0.5, 'center_y':0.5},
-            allow_stretch=True
-        )
-
-        btn_back_to_main = MDIconButton(
-            on_press=self.screen_switch,
-            font_size='45sp',
-            pos_hint={'center_x':0.07, 'center_y':0.96},
-            icon='arrow-left',
-            theme_text_color='Custom',
-            text_color=[.2510,.5529,.9765,1],
-            md_bg_color=[0,0,0,0]
-        )
-
-        lbl_top_name = MDLabel(
-            text='APP INFORMATION',
-            halign='left',
-            size_hint=(None,None), size=(450,40),
-            pos_hint={'center_x':0.56, 'center_y':0.96},
-            font_style='H5',
-            theme_text_color='Primary',
-            markup=True
-        )
-
-        lbl_info_version = MDLabel(
-            text=mdsanima_rt_go,
-            halign='center',
-            pos_hint={'center_x':0.5, 'center_y':0.02},
-            font_style='Caption',
-            theme_text_color='Secondary',
-            markup=True
-        )
-
         img_logo_mdsanima = Image(
             source=resource_path(img[3]),
             size=(211,211), pos=self.pos,
@@ -456,11 +443,11 @@ class MDSRTGO_scr_3(Screen):
             allow_stretch=True,
         )
 
-        # add widget layout
-        layout.add_widget(background)
-        layout.add_widget(btn_back_to_main)
-        layout.add_widget(lbl_top_name)
-        layout.add_widget(lbl_info_version)
+        # draw info version background top name
+        layout_mds.img_background(img[2])
+        layout_mds.lbl_top('arrow-left', self.screen_switch, 'APP INFORMATION')
+        layout_mds.lbl_info_version()
+        self.add_widget(layout_mds)
 
         # draw all widget
         self.add_widget(layout)
@@ -553,10 +540,10 @@ class MDSRTGO_scr_3(Screen):
 
         # add widget layout
         self.lbl_info_top('MDSANIMA VFX Studio')
-        self.lbl_info_mdsanima(info_vfx_studio, 'justify', '515sp')
+        self.lbl_info_mdsanima(info_vfx_studio, 'justify', '520sp')
         break_info()
         self.lbl_info_top('APP DEVS')
-        self.lbl_info_mdsanima(info_app_devs, 'justify', '250sp')
+        self.lbl_info_mdsanima(info_app_devs, 'justify', '255sp')
         break_info()
         self.lbl_info_top('OUR CLIENTS')
         self.lbl_info_bottom('admin@app.mdsanima.com')
