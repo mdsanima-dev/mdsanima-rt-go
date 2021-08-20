@@ -275,7 +275,7 @@ class MDSRTGO_scr_2(Screen):
             theme_text_color='Secondary'
         )
 
-        lbl_hours_val = MDLabel(
+        self.lbl_hours_val = MDLabel(
             text='0',
             halign='right',
             size_hint=(None,None), size=(70,40),
@@ -284,7 +284,7 @@ class MDSRTGO_scr_2(Screen):
             theme_text_color='Error'
         )
 
-        lbl_minutes_val = MDLabel(
+        self.lbl_minutes_val = MDLabel(
             text='0',
             halign='right',
             size_hint=(None,None), size=(70,40),
@@ -293,7 +293,7 @@ class MDSRTGO_scr_2(Screen):
             theme_text_color='Error'
         )
 
-        lbl_seconds_val = MDLabel(
+        self.lbl_seconds_val = MDLabel(
             text='0',
             halign='right',
             size_hint=(None,None), size=(70,40),
@@ -397,15 +397,18 @@ class MDSRTGO_scr_2(Screen):
         layout.add_widget(lbl_render_frame)
 
         layout.add_widget(lbl_hours)
-        layout.add_widget(lbl_hours_val)
+        layout.add_widget(self.lbl_hours_val)
+        sld_hours_val.bind(value=self.sld_get_hours_val)
         layout_box.add_widget(sld_hours_val)
 
         layout.add_widget(lbl_minutes)
-        layout.add_widget(lbl_minutes_val)
+        layout.add_widget(self.lbl_minutes_val)
+        sld_minutes_val.bind(value=self.sld_get_minutes_val)
         layout_box.add_widget(sld_minutes_val)
 
         layout.add_widget(lbl_seconds)
-        layout.add_widget(lbl_seconds_val)
+        layout.add_widget(self.lbl_seconds_val)
+        sld_seconds_val.bind(value=self.sld_get_seconds_val)
         layout_box.add_widget(sld_seconds_val)
 
         layout.add_widget(lbl_render_time)
@@ -433,6 +436,15 @@ class MDSRTGO_scr_2(Screen):
     def screen_switch(self, instance):
         self.manager.current = 'scr_3'
         self.manager.transition.direction = 'up'
+
+    def sld_get_hours_val(self, instance, slider_val):
+        self.lbl_hours_val.text = '%d' % slider_val
+
+    def sld_get_minutes_val(self, instance, slider_val):
+        self.lbl_minutes_val.text = '%d' % slider_val
+
+    def sld_get_seconds_val(self, instance, slider_val):
+        self.lbl_seconds_val.text = '%d' % slider_val
 
 
 class MDSRTGO_scr_3(Screen):
