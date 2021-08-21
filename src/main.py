@@ -10,7 +10,7 @@ kivy.require('2.0.0')
 
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from config import windows
 from config.image import get_images
@@ -22,6 +22,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.stacklayout import MDStackLayout
 from kivymd.uix.button import MDFlatButton, MDIconButton
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.label import MDLabel
@@ -128,7 +129,9 @@ class MDSRTGO_layout(Screen):
         layout.add_widget(background)
         self.add_widget(layout)
 
-    def sld_sliders_time(self, text_left: str, pos_hint_top: float, max: int):
+    def sld_sliders_time(self, text_left: str, pos_hint_top: float, max: int, offset: float):
+        self.se = '00'
+        layout_fly = MDFloatLayout()
         layout_box_h = MDBoxLayout(
             orientation='horizontal',
             padding=[0,0,5,0], spacing=0,
@@ -151,15 +154,15 @@ class MDSRTGO_layout(Screen):
             theme_text_color='Secondary'
         )
         self.time_val = MDLabel(
-            text='0',
+            text='00',
             halign='right',
             size_hint_x=0.9, size_hint_y=None,
             size=(70,40),
-            pos_hint={'center_x':0.5, 'center_y':0.5},
-            font_style='H5',
+            pos_hint={'center_x':0.5 + offset, 'center_y':0.845},
+            font_style='H4',
             theme_text_color='Error'
         )
-        self.slider_val = MDSlider(
+        slider_val = MDSlider(
             min=0, max=max, value=0,
             pos_hint={'center_x':0.5, 'center_y':0.5},
             size_hint_x=1, size_hint_y=None,
@@ -168,19 +171,28 @@ class MDSRTGO_layout(Screen):
             hint_text_color=[.2510,.5529,.9765,0]
         )
         layout_box_h.add_widget(time_tex)
-        layout_box_h.add_widget(self.time_val)
         self.add_widget(layout_box_h)
-        self.slider_val.bind(value=self.on_slider_val)
-        layout_box_v.add_widget(self.slider_val)
+        layout_fly.add_widget(self.time_val)
+        self.add_widget(layout_fly)
+        slider_val.bind(value=self.on_slider_val)
+        layout_box_v.add_widget(slider_val)
         self.add_widget(layout_box_v)
 
     def on_slider_val(self, instance, slider_val):
-        self.time_val.text = '%d' % slider_val
-        if slider_val >= 1:
-            self.time_val.theme_text_color = 'Custom'
-            self.time_val.text_color = [.2510,.5529,.9765,1]
-        else:
-            self.time_val.theme_text_color = 'Error'
+        """
+        Update label with value getting on slider and change colors.
+
+        :param instance: instance
+        :type instance: any
+        :param slider_val: slider
+        :type slider_val: float
+        """
+        self.time_val.text = '%02d' % slider_val
+        # if slider_val >= 1:
+        #     self.time_val.theme_text_color = 'Custom'
+        #     self.time_val.text_color = [.2510,.5529,.9765,1]
+        # else:
+        #     self.time_val.theme_text_color = 'Error'
 
 
 class MDSRTGO_scr_1(Screen):
@@ -304,6 +316,24 @@ class MDSRTGO_scr_2(Screen):
             theme_text_color='Hint'
         )
 
+        lbl_colon_0 = MDLabel(
+            text=':',
+            halign='right',
+            size_hint=(0.9,None), size=(200,40),
+            pos_hint={'center_x':0.5 - 0.075, 'center_y':0.845},
+            font_style='H4',
+            theme_text_color='Error'
+        )
+
+        lbl_colon_1 = MDLabel(
+            text=':',
+            halign='right',
+            size_hint=(0.9,None), size=(200,40),
+            pos_hint={'center_x':0.5 - 0.165, 'center_y':0.845},
+            font_style='H4',
+            theme_text_color='Error'
+        )
+
         lbl_render_time = MDLabel(
             text='RENDER TIME',
             halign='left',
@@ -365,17 +395,12 @@ class MDSRTGO_scr_2(Screen):
             on_release=self.screen_switch
         )
 
-        layout_box = MDBoxLayout(
-            orientation='vertical',
-            padding=0, spacing=0,
-            size_hint_x=1, size_hint_y=0.3,
-            pos_hint={'center_x':0.5, 'top':0.8}
-        )
-
         # add widget layout
         layout.add_widget(tfl_number_of_frames)
 
         layout.add_widget(lbl_render_frame)
+        layout.add_widget(lbl_colon_0)
+        layout.add_widget(lbl_colon_1)
 
         layout.add_widget(lbl_render_time)
         layout.add_widget(lbl_render_time_val)
@@ -399,29 +424,19 @@ class MDSRTGO_scr_2(Screen):
         layout_hrs = MDSRTGO_layout()
         layout_min = MDSRTGO_layout()
         layout_sec = MDSRTGO_layout()
-        layout_hrs.sld_sliders_time('HOURS', 0.875, 23)
-        layout_min.sld_sliders_time('MINUTES', 0.795, 59)
-        layout_sec.sld_sliders_time('SECONDS', 0.715, 59)
+        layout_hrs.sld_sliders_time('HOURS', 0.875, 23, -0.18)
+        layout_min.sld_sliders_time('MINUTES', 0.795, 59, -0.09)
+        layout_sec.sld_sliders_time('SECONDS', 0.715, 59, 0.00)
         self.add_widget(layout_hrs)
         self.add_widget(layout_min)
         self.add_widget(layout_sec)
 
         # draw all widget
         self.add_widget(layout)
-        self.add_widget(layout_box)
 
     def screen_switch(self, instance):
         self.manager.current = 'scr_3'
         self.manager.transition.direction = 'up'
-
-    def sld_get_hours_val(self, instance, slider_val):
-        self.lbl_hours_val.text = '%02d' % slider_val
-
-    def sld_get_minutes_val(self, instance, slider_val):
-        self.lbl_minutes_val.text = '%02d' % slider_val
-
-    def sld_get_seconds_val(self, instance, slider_val):
-        self.lbl_seconds_val.text = '%02d' % slider_val
 
 
 class MDSRTGO_scr_3(Screen):
