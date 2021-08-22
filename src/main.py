@@ -299,7 +299,7 @@ class MDSRTGO_layout(Screen):
             color: str, halign: str='center'
         ):
         layout = MDFloatLayout()
-        self.rendet_time_total = MDLabel(
+        self.render_time_total = MDLabel(
             text=text,
             halign=halign,
             size_hint=(0.9,None), size=(200,40),
@@ -308,7 +308,7 @@ class MDSRTGO_layout(Screen):
             theme_text_color=color,
             text_color=[.2510,.5529,.9765,1]
         )
-        self.rendet_time_total_human = MDLabel(
+        self.render_time_total_human = MDLabel(
             text=text,
             halign=halign,
             size_hint=(0.9,None), size=(200,40),
@@ -317,8 +317,8 @@ class MDSRTGO_layout(Screen):
             theme_text_color='Hint',
             text_color=[.2510,.5529,.9765,1]
         )
-        layout.add_widget(self.rendet_time_total)
-        layout.add_widget(self.rendet_time_total_human)
+        layout.add_widget(self.render_time_total)
+        layout.add_widget(self.render_time_total_human)
         self.add_widget(layout)
 
     def on_slider_hours(self, instance, slider_value):
@@ -341,8 +341,10 @@ class MDSRTGO_layout(Screen):
         self.total_render_time = delta_rt_one_frame * self.frames
         self.text_rt_one_result.text = str(delta_rt_one_frame)
         self.hum_rt_one_result.text = str(format_timespan(delta_rt_one_frame))
-        self.rendet_time_total.text = str(self.total_render_time)
-        self.rendet_time_total_human.text = str(format_timespan(self.total_render_time))
+        self.render_time_total.text = str(self.total_render_time)
+        self.render_time_total_human.text = str(
+            format_timespan(self.total_render_time)
+        )
         if hours or minutes or seconds >= 1:
             self.text_rt_one_result.theme_text_color = 'Custom'
             self.text_rt_one_result.text_color = [.2510,.5529,.9765,1]
@@ -498,7 +500,8 @@ class MDSRTGO_scr_2(Screen):
         layout_mds.lbl_time_code('00:00:10:00', 0.56, 'Body1', 'Secondary')
         layout_mds.lbl_time_code_human('10 SECONDS', 0.545, 'Overline', 'Hint')
         layout_mds.lbl_text(
-            'TOTAL RENDER TIME', 0.50, 'Subtitle1', 'Secondary', 'center')
+            'TOTAL RENDER TIME', 0.50, 'Subtitle1', 'Secondary', 'center'
+        )
         layout_mds.lbl_rt_total('0:00:00', 0.47, 'H4', 'Error')
         layout_mds.lbl_info_version()
         self.add_widget(layout_mds)
