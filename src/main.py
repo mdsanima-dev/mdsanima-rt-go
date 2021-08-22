@@ -83,6 +83,7 @@ class MDSRTGO_layout(Screen):
         self.minutes = 0
         self.seconds = 0
         self.frames = 240
+        self.total_render_time = '0:00:00'
 
     def lbl_top(self, icon: str, ic_on_press: None, lbl_text: str):
         """
@@ -158,27 +159,30 @@ class MDSRTGO_layout(Screen):
         layout.add_widget(background)
         self.add_widget(layout)
 
-    def tfl_number_of_frames(self, text: str, pos: float):
+    def tfl_number_of_frames(self, pos: float):
         layout = MDFloatLayout()
         self.number_of_frames = MDTextField(
             required=True, text=str(self.frames),
-            hint_text=text,
             helper_text_mode='on_error',
             input_filter='int', max_text_length=6,
             size_hint=(0.9,None),
             pos_hint={'center_x':0.5, 'top':pos},
-            current_hint_text_color=[.2510,.5529,.9765,.7],
+            current_hint_text_color=[.957,.573,.020,1],
             font_size='26sp'
         )
         self.number_of_frames.bind(text=self.on_fields_frames)
+        self.number_of_frames.bind(text=self.on_slider_result)
         layout.add_widget(self.number_of_frames)
         self.add_widget(layout)
 
-    def lbl_text(self, text: str, pos: int, style: str, color: str):
+    def lbl_text(
+            self, text: str, pos: int, style: str,
+            color: str, halign: str='left'
+        ):
         layout = MDFloatLayout()
         text_rt_one_result = MDLabel(
             text=text,
-            halign='left',
+            halign=halign,
             size_hint=(0.9,None), size=(200,40),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
@@ -208,9 +212,23 @@ class MDSRTGO_layout(Screen):
             size_hint=(0.9,None), size=(200,40),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
-            theme_text_color=color
+            theme_text_color=color,
+            text_color=[.957,.573,.020,1],
         )
         layout.add_widget(self.text_time_code)
+        self.add_widget(layout)
+
+    def lbl_time_code_human(self, text: str, pos: int, style: str, color: str):
+        layout = MDFloatLayout()
+        self.time_code_human = MDLabel(
+            text=text,
+            halign='right',
+            size_hint=(0.9,None), size=(200,40),
+            pos_hint={'center_x':0.5, 'top':pos},
+            font_style=style,
+            theme_text_color=color
+        )
+        layout.add_widget(self.time_code_human)
         self.add_widget(layout)
 
     def lbl_rt_result_one(self, text: str, pos: int, style: str, color: str):
@@ -244,7 +262,7 @@ class MDSRTGO_layout(Screen):
         slider_hours = MDSlider(
             min=0, max=23, value=0,
             size_hint=(0.94,None),
-            pos_hint={'center_x':0.5, 'top':0.85},
+            pos_hint={'center_x':0.5, 'top':0.83},
             color='#7c7c7c',
             show_off=False,
             hint_text_color=[.2510,.5529,.9765,0]
@@ -252,7 +270,7 @@ class MDSRTGO_layout(Screen):
         slider_minutes = MDSlider(
             min=0, max=59, value=0,
             size_hint=(0.94,None),
-            pos_hint={'center_x':0.5, 'top':0.77},
+            pos_hint={'center_x':0.5, 'top':0.75},
             color='#7c7c7c',
             show_off=False,
             hint_text_color=[.2510,.5529,.9765,0]
@@ -260,7 +278,7 @@ class MDSRTGO_layout(Screen):
         slider_seconds = MDSlider(
             min=0, max=59, value=0,
             size_hint=(0.94,None),
-            pos_hint={'center_x':0.5, 'top':0.69},
+            pos_hint={'center_x':0.5, 'top':0.67},
             color='#7c7c7c',
             show_off=False,
             hint_text_color=[.2510,.5529,.9765,0]
@@ -274,6 +292,33 @@ class MDSRTGO_layout(Screen):
         layout.add_widget(slider_hours)
         layout.add_widget(slider_minutes)
         layout.add_widget(slider_seconds)
+        self.add_widget(layout)
+
+    def lbl_rt_total(
+            self, text: str, pos: int, style: str,
+            color: str, halign: str='center'
+        ):
+        layout = MDFloatLayout()
+        self.rendet_time_total = MDLabel(
+            text=text,
+            halign=halign,
+            size_hint=(0.9,None), size=(200,40),
+            pos_hint={'center_x':0.5, 'top':pos},
+            font_style=style,
+            theme_text_color=color,
+            text_color=[.2510,.5529,.9765,1]
+        )
+        self.rendet_time_total_human = MDLabel(
+            text=text,
+            halign=halign,
+            size_hint=(0.9,None), size=(200,40),
+            pos_hint={'center_x':0.5, 'top':pos - 0.03},
+            font_style='Overline',
+            theme_text_color='Hint',
+            text_color=[.2510,.5529,.9765,1]
+        )
+        layout.add_widget(self.rendet_time_total)
+        layout.add_widget(self.rendet_time_total_human)
         self.add_widget(layout)
 
     def on_slider_hours(self, instance, slider_value):
@@ -293,8 +338,11 @@ class MDSRTGO_layout(Screen):
         delta_minutes = timedelta(minutes=int(minutes))
         delta_seconds = timedelta(seconds=int(seconds))
         delta_rt_one_frame = delta_hours + delta_minutes + delta_seconds
+        self.total_render_time = delta_rt_one_frame * self.frames
         self.text_rt_one_result.text = str(delta_rt_one_frame)
         self.hum_rt_one_result.text = str(format_timespan(delta_rt_one_frame))
+        self.rendet_time_total.text = str(self.total_render_time)
+        self.rendet_time_total_human.text = str(format_timespan(self.total_render_time))
         if hours or minutes or seconds >= 1:
             self.text_rt_one_result.theme_text_color = 'Custom'
             self.text_rt_one_result.text_color = [.2510,.5529,.9765,1]
@@ -306,6 +354,19 @@ class MDSRTGO_layout(Screen):
         frames_tc = frames_to_time_code(int(frames), 24)
         self.frames = int(frames)
         self.text_time_code.text = frames_tc
+        hours = str(frames_tc)[:2]
+        minut = str(frames_tc)[3:5]
+        secnd = str(frames_tc)[6:8]
+        frame = str(frames_tc)[9:]
+        frame_int = int(frame)
+        fra_chk = ' FRAME' if frame_int == 1 else ' FRAMES'
+        frames_end = '' if frame_int == 0 else ', ' + str(frame_int) + fra_chk
+        delta_time_code = timedelta(
+            hours=int(hours), minutes=int(minut), seconds=int(secnd)
+        )
+        self.time_code_human.text = str(
+            format_timespan(delta_time_code)) + str(frames_end
+        )
 
 
 class MDSRTGO_scr_1(Screen):
@@ -409,61 +470,6 @@ class MDSRTGO_scr_2(Screen):
         img = get_images()
 
         # assigning class to variable
-        lbl_render_time = MDLabel(
-            text='RENDER TIME',
-            halign='left',
-            size_hint=(0.9,None), size=(200,40),
-            pos_hint={'center_x':0.5, 'center_y':0.48},
-            font_style='Body2',
-            theme_text_color='Hint'
-        )
-
-        lbl_render_start = MDLabel(
-            text='START RENDER',
-            halign='left',
-            size_hint=(0.9,None), size=(200,40),
-            pos_hint={'center_x':0.5, 'center_y':0.38},
-            font_style='Body2',
-            theme_text_color='Hint'
-        )
-
-        lbl_render_finish = MDLabel(
-            text='FINISH RENDER',
-            halign='left',
-            size_hint=(0.9,None), size=(200,40),
-            pos_hint={'center_x':0.5, 'center_y':0.28},
-            font_style='Body2',
-            theme_text_color='Hint'
-        )
-
-        lbl_render_time_val = MDLabel(
-            text='10 minutes',
-            halign='left',
-            size_hint=(0.9,None), size=(450,40),
-            pos_hint={'center_x':0.5, 'center_y':0.44},
-            font_style='H5',
-            theme_text_color='Custom',
-            text_color = [.2510,.5529,.9765,1]
-        )
-
-        lbl_render_start_val = MDLabel(
-            text='2021-08-18  23:43:44  Wednesday',
-            halign='left',
-            size_hint=(0.9,None), size=(450,40),
-            pos_hint={'center_x':0.5, 'center_y':0.34},
-            font_style='H6',
-            theme_text_color='Secondary'
-        )
-
-        lbl_render_finish_val = MDLabel(
-            text='2021-08-18  23:53:44  Wednesday',
-            halign='left',
-            size_hint=(0.9,None), size=(450,40),
-            pos_hint={'center_x':0.5, 'center_y':0.24},
-            font_style='H6',
-            theme_text_color='Secondary'
-        )
-
         btn_app_info = MDFlatButton(
             text='APP INFO', size_hint=(None,None), size=(101,40),
             pos_hint={'x':0.416,'y':0.03},
@@ -471,33 +477,29 @@ class MDSRTGO_scr_2(Screen):
         )
 
         # add widget layout
-        layout.add_widget(lbl_render_time)
-        layout.add_widget(lbl_render_time_val)
-
-        layout.add_widget(lbl_render_start)
-        layout.add_widget(lbl_render_start_val)
-
-        layout.add_widget(lbl_render_finish)
-        layout.add_widget(lbl_render_finish_val)
-
         layout.add_widget(btn_app_info)
 
         # draw info version background top name
         layout_mds.img_background(img[2])
         rt_calc = 'RENDER TIME CALCULATOR'
         layout_mds.lbl_top('menu', self.screen_switch, rt_calc)
-        layout_mds.tfl_number_of_frames('NUMBER OF FRAMES', 0.94)
-        layout_mds.lbl_text('RENDER TIME PER FRAME', 0.87, 'Body2', 'Hint')
-        layout_mds.lbl_rt_result_one('0:00:00', 0.87, 'H4', 'Error')
-        layout_mds.lbl_rt_result_human('ERROR', 0.85, 'Overline', 'Hint')
-        layout_mds.lbl_text('HOURS', 0.84, 'Button', 'Secondary')
-        layout_mds.lbl_text('MINUTES', 0.76, 'Button', 'Secondary')
-        layout_mds.lbl_text('SECONDS', 0.68, 'Button', 'Secondary')
+        layout_mds.lbl_text('NUMBER OF FRAMES', 0.94, 'Body2', 'Hint')
+        layout_mds.tfl_number_of_frames(0.92)
+        layout_mds.lbl_text('RENDER TIME PER FRAME', 0.85, 'Body2', 'Hint')
+        layout_mds.lbl_rt_result_one('0:00:00', 0.85, 'H5', 'Error')
+        layout_mds.lbl_rt_result_human('0 SECONDS', 0.83, 'Overline', 'Hint')
+        layout_mds.lbl_text('HOURS', 0.82, 'Caption', 'Secondary')
+        layout_mds.lbl_text('MINUTES', 0.74, 'Caption', 'Secondary')
+        layout_mds.lbl_text('SECONDS', 0.66, 'Caption', 'Secondary')
         layout_mds.sld_slider()
-        layout_mds.lbl_text('ANIMATION FRAME RATE', 0.61, 'Body2', 'Hint')
-        layout_mds.lbl_statistic('24 FPS', 0.61, 'Button', 'Secondary')
-        layout_mds.lbl_text('DURATION TIME CODE', 0.58, 'Body2', 'Hint')
-        layout_mds.lbl_time_code('00:00:10:00', 0.58, 'Button', 'Secondary')
+        layout_mds.lbl_text('ANIMATION FRAME RATE', 0.59, 'Body2', 'Hint')
+        layout_mds.lbl_statistic('24 FPS', 0.59, 'Body1', 'Secondary')
+        layout_mds.lbl_text('DURATION TIME CODE', 0.56, 'Body2', 'Hint')
+        layout_mds.lbl_time_code('00:00:10:00', 0.56, 'Body1', 'Secondary')
+        layout_mds.lbl_time_code_human('10 SECONDS', 0.545, 'Overline', 'Hint')
+        layout_mds.lbl_text(
+            'TOTAL RENDER TIME', 0.50, 'Subtitle1', 'Secondary', 'center')
+        layout_mds.lbl_rt_total('0:00:00', 0.47, 'H4', 'Error')
         layout_mds.lbl_info_version()
         self.add_widget(layout_mds)
 
