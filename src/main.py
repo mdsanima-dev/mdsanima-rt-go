@@ -160,7 +160,7 @@ class MDSRTGO_layout(Screen):
 
     def lbl_rt_result_human(self, text: str, pos: int, style: str, color: str):
         layout = MDFloatLayout()
-        self.human_rt_one_result = MDLabel(
+        self.hum_rt_one_result = MDLabel(
             text=text,
             halign='right',
             size_hint=(0.9,None), size=(200,40),
@@ -168,7 +168,7 @@ class MDSRTGO_layout(Screen):
             font_style=style,
             theme_text_color=color
         )
-        layout.add_widget(self.human_rt_one_result)
+        layout.add_widget(self.hum_rt_one_result)
         self.add_widget(layout)
 
     def sld_slider(self):
@@ -226,7 +226,7 @@ class MDSRTGO_layout(Screen):
         delta_seconds = timedelta(seconds=int(seconds))
         delta_rt_one_frame = delta_hours + delta_minutes + delta_seconds
         self.text_rt_one_result.text = str(delta_rt_one_frame)
-        self.human_rt_one_result.text = str(format_timespan(delta_rt_one_frame))
+        self.hum_rt_one_result.text = str(format_timespan(delta_rt_one_frame))
         if hours or minutes or seconds >= 1:
             self.text_rt_one_result.theme_text_color = 'Custom'
             self.text_rt_one_result.text_color = [.2510,.5529,.9765,1]
@@ -430,7 +430,7 @@ class MDSRTGO_scr_2(Screen):
         layout_mds.lbl_text('MINUTES', 0.76, 'Button', 'Secondary')
         layout_mds.lbl_text('SECONDS', 0.68, 'Button', 'Secondary')
         layout_mds.lbl_rt_result_one('0:00:00', 0.87, 'H4', 'Error')
-        layout_mds.lbl_rt_result_human('error', 0.85, 'Overline', 'Hint')
+        layout_mds.lbl_rt_result_human('ERROR', 0.85, 'Overline', 'Hint')
         layout_mds.sld_slider()
         layout_mds.lbl_info_version()
         self.add_widget(layout_mds)
