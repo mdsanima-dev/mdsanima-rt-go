@@ -132,6 +132,21 @@ class MDSRTGO_layout(Screen):
         layout.add_widget(background)
         self.add_widget(layout)
 
+    def tfl_number_of_frames(self):
+        layout = MDFloatLayout()
+        self.number_of_frames = MDTextField(
+            required=True, text='240',
+            hint_text='NUMBER OF FRAMES',
+            helper_text_mode='on_error',
+            input_filter='int', max_text_length=6,
+            pos_hint={'center_x':0.5, 'center_y':0.9},
+            size_hint_x=0.9,
+            current_hint_text_color=[.2510,.5529,.9765,.7],
+            font_size='26sp'
+        )
+        layout.add_widget(self.number_of_frames)
+        self.add_widget(layout)
+
     def lbl_text(self, text: str, pos: int, style: str, color: str):
         layout = MDFloatLayout()
         text_rt_one_result = MDLabel(
@@ -335,17 +350,6 @@ class MDSRTGO_scr_2(Screen):
         img = get_images()
 
         # assigning class to variable
-        tfl_number_of_frames = MDTextField(
-            required=True, text='240',
-            hint_text='NUMBER OF FRAMES',
-            helper_text_mode='on_error',
-            input_filter='int', max_text_length=6,
-            pos_hint={'center_x':0.5, 'center_y':0.9},
-            size_hint_x=0.9,
-            current_hint_text_color=[.2510,.5529,.9765,.7],
-            font_size='26sp'
-        )
-
         lbl_render_time = MDLabel(
             text='RENDER TIME',
             halign='left',
@@ -408,8 +412,6 @@ class MDSRTGO_scr_2(Screen):
         )
 
         # add widget layout
-        layout.add_widget(tfl_number_of_frames)
-
         layout.add_widget(lbl_render_time)
         layout.add_widget(lbl_render_time_val)
 
@@ -425,6 +427,7 @@ class MDSRTGO_scr_2(Screen):
         layout_mds.img_background(img[2])
         rt_calc = 'RENDER TIME CALCULATOR'
         layout_mds.lbl_top('menu', self.screen_switch, rt_calc)
+        layout_mds.tfl_number_of_frames()
         layout_mds.lbl_text('RENDER TIME PER FRAME', 0.87, 'Body2', 'Hint')
         layout_mds.lbl_text('HOURS', 0.84, 'Button', 'Secondary')
         layout_mds.lbl_text('MINUTES', 0.76, 'Button', 'Secondary')
