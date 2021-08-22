@@ -50,7 +50,7 @@ def resource_path(relative_path: str):
 
 def frames_to_time_code(frames: int, fps: int) -> str:
     """
-    Function converts frames to time code ``00:00:00:00``
+    Function converts frames to time code `00:00:00:00` format
 
     :param frames: number of total frames
     :type frames: int
@@ -82,6 +82,7 @@ class MDSRTGO_layout(Screen):
         self.hours = 0
         self.minutes = 0
         self.seconds = 0
+        self.frames = 240
 
     def lbl_top(self, icon: str, ic_on_press: None, lbl_text: str):
         """
@@ -160,7 +161,7 @@ class MDSRTGO_layout(Screen):
     def tfl_number_of_frames(self, text: str, pos: float):
         layout = MDFloatLayout()
         self.number_of_frames = MDTextField(
-            required=True, text='240',
+            required=True, text=str(self.frames),
             hint_text=text,
             helper_text_mode='on_error',
             input_filter='int', max_text_length=6,
@@ -169,6 +170,7 @@ class MDSRTGO_layout(Screen):
             current_hint_text_color=[.2510,.5529,.9765,.7],
             font_size='26sp'
         )
+        self.number_of_frames.bind(text=self.on_fields_frames)
         layout.add_widget(self.number_of_frames)
         self.add_widget(layout)
 
@@ -298,6 +300,12 @@ class MDSRTGO_layout(Screen):
             self.text_rt_one_result.text_color = [.2510,.5529,.9765,1]
         else:
             self.text_rt_one_result.theme_text_color = 'Error'
+
+    def on_fields_frames(self, instance, frames_value):
+        frames = 0 if frames_value == '' else frames_value
+        frames_tc = frames_to_time_code(int(frames), 24)
+        self.frames = int(frames)
+        self.text_time_code.text = frames_tc
 
 
 class MDSRTGO_scr_1(Screen):
@@ -489,7 +497,7 @@ class MDSRTGO_scr_2(Screen):
         layout_mds.lbl_text('ANIMATION FRAME RATE', 0.61, 'Body2', 'Hint')
         layout_mds.lbl_statistic('24 FPS', 0.61, 'Button', 'Secondary')
         layout_mds.lbl_text('DURATION TIME CODE', 0.58, 'Body2', 'Hint')
-        layout_mds.lbl_time_code('00:00:00:00', 0.58, 'Button', 'Secondary')
+        layout_mds.lbl_time_code('00:00:10:00', 0.58, 'Button', 'Secondary')
         layout_mds.lbl_info_version()
         self.add_widget(layout_mds)
 
