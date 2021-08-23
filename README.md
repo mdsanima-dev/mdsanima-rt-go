@@ -96,7 +96,7 @@ sudo python3.8 -m PyInstaller \
     --onefile /media/sf_mdsanima-rt-go/spec_linux_onefile.spec
 ```
 
-## Build Android `armeabi-v7a`
+## Build Android `armeabi-v7a` `arm64-v8a` `x86` `x86_64`
 
 Connect phone to pc and run on `PowerShell` this command:
 
@@ -124,7 +124,10 @@ cp -r /mnt/j/github-mdsanima-dev/mdsanima-rt-go/* .
 Build and deploy:
 
 ```shell
-sudo buildozer -v android debug deploy run logcat
+sudo buildozer --profile armeabi-v7a -v android debug deploy run logcat
+sudo buildozer --profile arm64-v8a -v android debug
+sudo buildozer --profile x86 -v android debug
+sudo buildozer --profile x86_64 -v android debug
 ```
 
 Copy `.apk` to `dist` folder:
