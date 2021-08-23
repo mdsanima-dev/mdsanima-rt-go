@@ -22,7 +22,6 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.stacklayout import MDStackLayout
 from kivymd.uix.button import MDFlatButton, MDIconButton
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.label import MDLabel
@@ -30,6 +29,7 @@ from kivymd.uix.list import MDList
 from kivymd.uix.progressbar import MDProgressBar
 from kivymd.uix.slider import MDSlider
 from kivymd.uix.textfield import MDTextField
+
 from plyer import notification
 from humanfriendly import format_timespan
 
@@ -309,7 +309,7 @@ class MDSRTGO_layout(Screen):
             text_color=[.2510,.5529,.9765,1]
         )
         self.render_time_total_human = MDLabel(
-            text=text,
+            text='0 SECONDS',
             halign=halign,
             size_hint=(0.9,None), size=(200,40),
             pos_hint={'center_x':0.5, 'top':pos - 0.03},
@@ -319,6 +319,54 @@ class MDSRTGO_layout(Screen):
         )
         layout.add_widget(self.render_time_total)
         layout.add_widget(self.render_time_total_human)
+        self.add_widget(layout)
+
+    def lbl_rt_date_start(
+            self, text: str, pos: int, style: str,
+            color: str, halign: str='center'
+        ):
+        layout = MDFloatLayout()
+        self.render_time_date_start = MDLabel(
+            text=text,
+            halign=halign,
+            size_hint=(0.9,None), size=(200,40),
+            pos_hint={'center_x':0.5, 'top':pos},
+            font_style=style,
+            theme_text_color=color,
+            text_color=[.957,.573,.02,1]
+        )
+        layout.add_widget(self.render_time_date_start)
+        self.add_widget(layout)
+
+    def lbl_rt_date_complete(
+            self, text: str, pos: int, style: str,
+            color: str, halign: str='center'
+        ):
+        layout = MDFloatLayout()
+        self.render_time_date_complete = MDLabel(
+            text=text,
+            halign=halign,
+            size_hint=(0.9,None), size=(200,40),
+            pos_hint={'center_x':0.5, 'top':pos},
+            font_style=style,
+            theme_text_color=color,
+            text_color=[.2510,.5529,.9765,1]
+        )
+        layout.add_widget(self.render_time_date_complete)
+        self.add_widget(layout)
+
+    def pgb_progress(self):
+        layout = MDFloatLayout()
+        self.progress_rt = MDProgressBar(
+            type='determinate',
+            size_hint=(1,None),
+            pos_hint={'center_x':0.5, 'center_y':0.005},
+            running_duration=0.4,
+            catching_duration=0.8,
+            color=[1,.0,.0,1]
+        )
+        layout.add_widget(self.progress_rt)
+        self.progress_rt.start()
         self.add_widget(layout)
 
     def on_slider_hours(self, instance, slider_value):
@@ -348,8 +396,17 @@ class MDSRTGO_layout(Screen):
         if hours or minutes or seconds >= 1:
             self.text_rt_one_result.theme_text_color = 'Custom'
             self.text_rt_one_result.text_color = [.2510,.5529,.9765,1]
+            self.progress_rt.stop()
         else:
             self.text_rt_one_result.theme_text_color = 'Error'
+            self.progress_rt.start()
+        now = datetime.now()
+        date_now = str(now.strftime('%Y-%m-%d  %H:%M:%S  %A')).upper()
+        self.render_time_date_start.text = str(date_now)
+        sec_complet = timedelta(seconds=self.total_render_time.total_seconds())
+        complete = now + sec_complet
+        date_complet = str(complete.strftime('%Y-%m-%d  %H:%M:%S  %A')).upper()
+        self.render_time_date_complete.text = str(date_complet)
 
     def on_fields_frames(self, instance, frames_value):
         frames = 0 if frames_value == '' else frames_value
@@ -415,8 +472,8 @@ class MDSRTGO_scr_1(Screen):
         pgb_progress_bot = MDProgressBar(
             type='determinate',
             pos_hint={'center_x':0.5, 'center_y':0.005},
-            running_duration=1,
-            catching_duration=1.5
+            running_duration=0.4,
+            catching_duration=0.8
         )
 
         # add widget layout
@@ -481,6 +538,11 @@ class MDSRTGO_scr_2(Screen):
         # add widget layout
         layout.add_widget(btn_app_info)
 
+        # date time convert
+        now = datetime.now()
+        date_now = now.strftime('%Y-%m-%d  %H:%M:%S  %A')
+        date_up = str(date_now).upper()
+
         # draw info version background top name
         layout_mds.img_background(img[2])
         rt_calc = 'RENDER TIME CALCULATOR'
@@ -500,9 +562,18 @@ class MDSRTGO_scr_2(Screen):
         layout_mds.lbl_time_code('00:00:10:00', 0.56, 'Body1', 'Secondary')
         layout_mds.lbl_time_code_human('10 SECONDS', 0.545, 'Overline', 'Hint')
         layout_mds.lbl_text(
-            'TOTAL RENDER TIME', 0.50, 'Subtitle1', 'Secondary', 'center'
+            'START RENDERING', 0.50, 'Caption', 'Secondary', 'center'
         )
-        layout_mds.lbl_rt_total('0:00:00', 0.47, 'H4', 'Error')
+        layout_mds.lbl_rt_date_start(date_up, 0.48, 'Body2', 'Hint')
+        layout_mds.lbl_text(
+            'TOTAL RENDER TIME', 0.45, 'Subtitle1', 'Secondary', 'center'
+        )
+        layout_mds.lbl_rt_total('0:00:00', 0.42, 'H4', 'Error')
+        layout_mds.lbl_text(
+            'COMPLETE RENDERING', 0.36, 'Caption', 'Secondary', 'center'
+        )
+        layout_mds.lbl_rt_date_complete(date_up, 0.34, 'Body2', 'Hint')
+        layout_mds.pgb_progress()
         layout_mds.lbl_info_version()
         self.add_widget(layout_mds)
 
