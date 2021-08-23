@@ -312,7 +312,7 @@ class MDSRTGO_layout(Screen):
             text='0 SECONDS',
             halign=halign,
             size_hint=(0.9,None), size=(200,40),
-            pos_hint={'center_x':0.5, 'top':pos - 0.023},
+            pos_hint={'center_x':0.5, 'top':pos - 0.025},
             font_style='Overline',
             theme_text_color='Hint',
             text_color=[.2510,.5529,.9765,1]
@@ -401,11 +401,11 @@ class MDSRTGO_layout(Screen):
             self.text_rt_one_result.theme_text_color = 'Error'
             self.progress_rt.start()
         now = datetime.now()
-        date_now = str(now.strftime('%Y-%m-%d  %H:%M:%S  %A')).upper()
+        date_now = str(now.strftime('%H:%M:%S  %Y-%m-%d  %A')).upper()
         self.render_time_date_start.text = str(date_now)
         sec_complet = timedelta(seconds=self.total_render_time.total_seconds())
         complete = now + sec_complet
-        date_complet = str(complete.strftime('%Y-%m-%d  %H:%M:%S  %A')).upper()
+        date_complet = str(complete.strftime('%H:%M:%S  %Y-%m-%d  %A')).upper()
         self.render_time_date_complete.text = str(date_complet)
 
     def on_fields_frames(self, instance, frames_value):
@@ -540,7 +540,7 @@ class MDSRTGO_scr_2(Screen):
 
         # date time convert
         now = datetime.now()
-        date_now = now.strftime('%Y-%m-%d  %H:%M:%S  %A')
+        date_now = now.strftime('%H:%M:%S  %Y-%m-%d  %A')
         date_up = str(date_now).upper()
 
         # draw info version background top name
