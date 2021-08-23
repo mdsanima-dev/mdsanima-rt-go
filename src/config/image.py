@@ -3,7 +3,7 @@ Set images variables
 """
 
 
-app_icon = 'image/ic_launcher/res/mipmap-xhdpi/ic_launcher.png'
+app_icon = 'image/ic_launcher/res/mipmap-hdpi/ic_launcher.png'
 bg_welcome = 'image/background/bg_1.png'
 bg_main = 'image/background/bg_2.png'
 logo_web = 'image/ic_launcher/icons/ic_mdsanima_20_drp_sdw_b.png'

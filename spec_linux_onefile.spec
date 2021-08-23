@@ -57,11 +57,14 @@ exe = EXE(pyz,
             a.zipfiles + [('O','','OPTION')],
             a.datas + [
                 ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'DATA'),
+                ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.ico', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-hdpi/ic_launcher.ico', 'DATA'),
                 ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'DATA'),
                 ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'DATA'),
-                ('image/bacground/bg_1.png', '/media/sf_mdsanima-rt-go/src/image/bacground/bg_1.png', 'DATA'),
-                ('image/bacground/bg_2.png', '/media/sf_mdsanima-rt-go/src/image/bacground/bg_2.png', 'DATA'),
-                ('image/ic_launcher/web_hi_res_512.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/web_hi_res_512.png', 'DATA')
+                ('image/background/bg_1.png', '/media/sf_mdsanima-rt-go/src/image/background/bg_1.png', 'DATA'),
+                ('image/background/bg_2.png', '/media/sf_mdsanima-rt-go/src/image/background/bg_2.png', 'DATA'),
+                ('image/ic_launcher/icons/ic_mdsanima_12_drp_sdw_w.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/icons/ic_mdsanima_12_drp_sdw_w.png', 'DATA'),
+                ('image/ic_launcher/icons/ic_mdsanima_20_drp_sdw_b.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/icons/ic_mdsanima_20_drp_sdw_b.png', 'DATA'),
+                ('image/ic_launcher/ascii_mdsanima.png', '/media/sf_mdsanima-rt-go/src/image/ic_launcher/ascii_mdsanima.png', 'DATA')
                 ],
             [],
             exclude_binaries=False,
@@ -74,5 +77,5 @@ exe = EXE(pyz,
 	        upx_exclude=[],
 	        runtime_tmpdir=None,
             console=True,
-            icon='/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png'
+            icon='/media/sf_mdsanima-rt-go/src/image/ic_launcher/res/mipmap-hdpi/ic_launcher.ico'
             )

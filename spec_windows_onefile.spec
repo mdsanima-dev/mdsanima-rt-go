@@ -63,11 +63,14 @@ exe = EXE(pyz,
             a.zipfiles + [('O','','OPTION')],
             a.datas + [
                 ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.png', 'DATA'),
+                ('image/ic_launcher/res/mipmap-hdpi/ic_launcher.ico', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.ico', 'DATA'),
                 ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.png', 'DATA'),
                 ('image/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.ico', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico', 'DATA'),
-                ('image/bacground/bg_1.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\bacground\\bg_1.png', 'DATA'),
-                ('image/bacground/bg_2.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\bacground\\bg_2.png', 'DATA'),
-                ('image/ic_launcher/web_hi_res_512.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\web_hi_res_512.png', 'DATA')
+                ('image/background/bg_1.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\background\\bg_1.png', 'DATA'),
+                ('image/background/bg_2.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\background\\bg_2.png', 'DATA'),
+                ('image/ic_launcher/icons/ic_mdsanima_12_drp_sdw_w.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\icons\\ic_mdsanima_12_drp_sdw_w.png', 'DATA'),
+                ('image/ic_launcher/icons/ic_mdsanima_20_drp_sdw_b.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\icons\\ic_mdsanima_20_drp_sdw_b.png', 'DATA'),
+                ('image/ic_launcher/ascii_mdsanima.png', 'J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\ascii_mdsanima.png', 'DATA')
                 ],
             [],
             name=("mdsanima-rt-go-" + str(__version__) + "-windows64-debug"),
@@ -79,6 +82,6 @@ exe = EXE(pyz,
 	        upx_exclude=[],
 	        runtime_tmpdir=None,
             console=True,
-            icon='J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-xxxhdpi\\ic_launcher.ico',
+            icon='J:\\github-mdsanima-dev\\mdsanima-rt-go\\src\\image\\ic_launcher\\res\\mipmap-hdpi\\ic_launcher.ico',
             version='J:\\github-mdsanima-dev\\mdsanima-rt-go\\spec_windows_version.rc'
             )
