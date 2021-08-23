@@ -312,7 +312,7 @@ class MDSRTGO_layout(Screen):
             text='0 SECONDS',
             halign=halign,
             size_hint=(0.9,None), size=(200,40),
-            pos_hint={'center_x':0.5, 'top':pos - 0.03},
+            pos_hint={'center_x':0.5, 'top':pos - 0.023},
             font_style='Overline',
             theme_text_color='Hint',
             text_color=[.2510,.5529,.9765,1]
@@ -389,7 +389,7 @@ class MDSRTGO_layout(Screen):
         self.total_render_time = delta_rt_one_frame * self.frames
         self.text_rt_one_result.text = str(delta_rt_one_frame)
         self.hum_rt_one_result.text = str(format_timespan(delta_rt_one_frame))
-        self.render_time_total.text = str(self.total_render_time)
+        self.render_time_total.text = str(self.total_render_time).upper()
         self.render_time_total_human.text = str(
             format_timespan(self.total_render_time)
         )
@@ -566,9 +566,9 @@ class MDSRTGO_scr_2(Screen):
         )
         layout_mds.lbl_rt_date_start(date_up, 0.48, 'Body2', 'Hint')
         layout_mds.lbl_text(
-            'TOTAL RENDER TIME', 0.45, 'Subtitle1', 'Secondary', 'center'
+            'TOTAL RENDER TIME', 0.445, 'Subtitle1', 'Secondary', 'center'
         )
-        layout_mds.lbl_rt_total('0:00:00', 0.42, 'H4', 'Error')
+        layout_mds.lbl_rt_total('0:00:00', 0.415, 'H4', 'Error')
         layout_mds.lbl_text(
             'COMPLETE RENDERING', 0.36, 'Caption', 'Secondary', 'center'
         )
