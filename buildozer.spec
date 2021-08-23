@@ -36,7 +36,7 @@ version.filename = %(source.dir)s/__init__.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, kivy==2.0.0, kivymd==0.104.2, plyer==1.4.3, kivy-garden, openssl, humanfriendly==8.2, pillow
+requirements = python3, kivy==2.0.0, kivymd==0.104.2, plyer==1.4.3, kivy-garden, openssl, humanfriendly==9.2, pillow
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -220,7 +220,19 @@ android.logcat_filters = *:S python:D
 #android.copy_libs = 1
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-android.arch = armeabi-v7a
+#android.arch = armeabi-v7a
+
+[app:android.arch@armeabi-v7a]
+armeabi-v7a
+
+[app:android.arch@arm64-v8a]
+arm64-v8a
+
+[app:android.arch@x86]
+x86
+
+[app:android.arch@x86_64]
+x86_64
 
 #
 # Python for android (p4a) specific
