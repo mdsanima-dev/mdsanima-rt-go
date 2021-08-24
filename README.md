@@ -121,6 +121,12 @@ cd /home/mdsanima/mdsanima-rt-go/
 rm -r * && cp -r /mnt/j/github-mdsanima-dev/mdsanima-rt-go/* .
 ```
 
+Before building if requirements on buildozer.spec updated:
+
+```shell
+sudo buildozer android clean
+```
+
 Build and deploy:
 
 ```shell
