@@ -6,3 +6,4 @@ kivy-garden.graph
 gstreamer-player==1.1.2
 plyer==2.0.0
 humanfriendly==9.2
+buildozer==1.2.0
