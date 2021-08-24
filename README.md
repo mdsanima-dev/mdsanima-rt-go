@@ -118,7 +118,7 @@ Run this on `wsl` to copy all files in to `home` directory:
 
 ```shell
 cd /home/mdsanima/mdsanima-rt-go/
-cp -r /mnt/j/github-mdsanima-dev/mdsanima-rt-go/* .
+rm -r * && cp -r /mnt/j/github-mdsanima-dev/mdsanima-rt-go/* .
 ```
 
 Build and deploy:
@@ -128,6 +128,12 @@ sudo buildozer --profile armeabi-v7a -v android debug deploy run logcat
 sudo buildozer --profile arm64-v8a -v android debug
 sudo buildozer --profile x86 -v android debug
 sudo buildozer --profile x86_64 -v android debug
+```
+
+Adb install:
+
+```shell
+adb install -r /home/mdsanima/mdsanima-rt-go/dist/android/mdsanima.rt.go-0.3.0-armeabi-v7a-debug.apk
 ```
 
 Copy `.apk` to `dist` folder:
