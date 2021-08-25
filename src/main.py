@@ -536,14 +536,12 @@ class MDSRTGO_scr_2(Screen):
         img = get_images()
 
         # assigning class to variable
-        btn_app_info = MDFlatButton(
-            text='APP INFO',
-            size_hint=(None,None), size=(101,40),
-            pos_hint={'center_x':0.5, 'y':0.03},
-            on_release=self.screen_switch
-        )
-
-        # add widget layout
+        btn_app_info = MDFlatButton()
+        btn_app_info.text = 'APP INFO'
+        btn_app_info.size = (101, 40)
+        btn_app_info.size_hint = (None, None)
+        btn_app_info.pos_hint = {'center_x': 0.5, 'y': 0.03}
+        btn_app_info.on_release = self.screen_switch
         layout.add_widget(btn_app_info)
 
         # date time convert
