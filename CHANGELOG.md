@@ -7,6 +7,64 @@ and `README.md` file for commit guidelines. Also you should check [conventional-
 Docomentation for **mdsanima-rt-go** Aplication is available
 at [docs mdsanima-dev](https://mdsanima-dev.github.io/mdsanima-rt-go/) be sure to check it.
 
+## [0.3.0](https://github.com/mdsanima-dev/mdsanima-rt-go/compare/v0.2.0...v0.3.0)
+
+*Date:* *2021-08-25*
+
+### Features
+
+* add toolbar with dark color closes [#29](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/29) ([22b9929](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/22b9929c27fd7548ac228501f26660fc2a08ab43))
+* animation time code and frame rate labels ([aa00d9f](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/aa00d9f7193b2f66ec65abb38befde5baa2895a5))
+* app info button and set transition direction `up` closes [#31](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/31) ([92f2e3f](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/92f2e3f9c0e9a306f57ac9afc165d9b89c850ac3))
+* ASCII art images in `info app` screen closes [#46](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/46) ([abfb3b5](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/abfb3b55cff98cc46b14d56f5e37b96aca9d366b))
+* back button to `main` screen closes [#42](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/42) ([39e9974](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/39e9974e2e62be87e91e8d422087409189c4ace2))
+* blur bacground image on second `main` screen closes [#30](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/30) ([f295c5c](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/f295c5c89d15de4e2c45b7104d5b9fa788ffa82f))
+* blured background on `info app` screen closes [#41](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/41) ([c1e03a9](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/c1e03a942a5975ff99593b1701f8a7612b9755e2))
+* convert frames to timecode format ([5d11f68](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/5d11f681cf811383d2883a2c54e969367d2a2d14))
+* date time start and complete progress red when no rt value ([01b45cb](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/01b45cb76911527ce26eb5bf95bacfe3097805b3))
+* implement sliders values show on label ([be9e0f7](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/be9e0f75f86c0901fa88fc0a73eae94173863e1c))
+* label renderi time result closes [#34](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/34) ([777a004](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/777a004dfb2e4fb265ba7f1f001aa3d77aef2712))
+* render time total calculation and human friendly format ([b905e16](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/b905e161b67328afc4e3ede02fd7bb0bc78a0a1c))
+* **devs:** function convert frames to time code ([2558a38](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/2558a3846c970410deccbcc6b3587dd1d273480b))
+* human friendly value text render time one frame ([b1a0009](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/b1a000906afdd193cff11aa9baabd9934abbef1f))
+* info version on the bottom `info app` screen closes [#40](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/40) ([9c3f8c5](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/9c3f8c5b1ab33fa1e5012947ed58ef6ebfabf7aa))
+* label start and finish render time closes [#35](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/35) and [#36](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/36) ([eaf391f](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/eaf391f64a90a3f340207e95809ca0e0740ea665))
+* progress bar loading animation on `welcome` screen closes [#27](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/27) ([8621e13](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/8621e13920a72bfe815e9b1e932a7cacb1328175))
+* scroll view in `info app` screen closes [#43](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/43) ([a27f1bc](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/a27f1bc5ad2a450c31cb89ae0092e5f1ad4b0cde))
+* sliders for render time one frame closes [#33](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/33) ([8cebb2a](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/8cebb2a8d600083d142efe464b6658d14e8ecd18))
+* text fields how many frames closes [#32](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/32) ([ad92cf4](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/ad92cf4b9c6f9f43534efa63a73bbb877db40f75)), closes [#29](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/29)
+
+### Bug Fixes
+
+* **android:** sliders align ([5ead2a2](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/5ead2a2911e4ff9e8edc7a1a6d5e9cf536c39ae2))
+* **android:** top navigation ([76f6794](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/76f67949b7d003004efc1775fab4def32f4c6616))
+* app info button on the middle of screen ([6b5dfc1](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/6b5dfc1d4afd4518948f7ce14294518c9a55d848))
+* background folder name ([ef4f669](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/ef4f669750c702cb799bc35511f8e2956e42c5d8))
+* brightness and contrast on the bg welcome screen ([9808a78](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/9808a78af8ea872ce0bc7116797cfbe2932a39f8))
+* icons on first screen and `app info` closes [#53](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/53) ([e7aa073](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/e7aa073f956f941eca85bc6b0944300f454a7c9f))
+* image launch for android drop shadow white ([0054bec](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/0054bec4105cc16f16de331cad8fb1aadcac3cf1))
+* **build-system:** update images and icons closes [#38](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/38) ([fc67664](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/fc676644cb27cf3c8f7ff28add773d48ad321f14))
+* icons images `.png` and `.ico` format ([86fdcb4](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/86fdcb4aab00295a66fbad982261a775ad5575c7))
+* show first time start and complete render ([4d0bc97](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/4d0bc97dfc9f7ae223b3df093814aabc660f833b))
+* total render time labels upper ([68564be](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/68564be3f468d33444d4a820f12ee865a8ce57ff))
+* **devs:** clean up code enter after close the brackets in to all variable ([c34b0c5](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/c34b0c58e626bd48285172ddb5d6c32a6660c53e))
+* **devs:** update humanfriendly python package requirements ([70dbd57](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/70dbd57d65869e8d7e5eeb23817d55fedd402f80))
+* images list on `get_images` function and adjust setting kivy ([ab01f54](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/ab01f543a7f6dacc101d1a5f1e631bab8dc16149))
+* import MDBoxLayout and MDToolbar ([2fa9b3d](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/2fa9b3d76cedb759ddbe1418a6329ae4de7c2c1c))
+* improved ui layout on main screen ([217285e](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/217285e9a61ba8fd6e3817bf193c6ec02ec92a1c))
+* no resizable config closes [#28](https://github.com/mdsanima-dev/mdsanima-rt-go/issues/28) ([6dbfd6d](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/6dbfd6d52fa0b08420838553c43446475c86360e))
+* render time per frame only one color ([e7f70ec](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/e7f70ec7ffdf0dc9f2988309df4aa55775d1133b))
+
+### Documentation
+
+* adb install command ([67f18d2](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/67f18d22dd5cb35a0f5773a67f875456a36eb2c5))
+* add connect with me info and license fix some docstring ([c974e3e](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/c974e3e955956591561925ae90cdb91dec2e572a))
+* add documentation docstring to `main.py` file ([28ab3c2](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/28ab3c20bdc01db102689e4462afab4e4013382a))
+* fix string on `README.md` file ([0cde5b8](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/0cde5b8b09767838d39757f28a879c6fe7927e08))
+* **screenshot:** 0.2.0 screenshot android linux ubuntu20.04 windows10 ([9bc31bb](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/9bc31bb2ea4bc21206d529890b4320ee804c0553))
+* **screenshot:** screenshot all platform on the `README.md` file ([ecd55ff](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/ecd55ff634d31d9c9076b3eae36ac227bc253bc9))
+* **screenshot-android:** add table ([aa2b316](https://github.com/mdsanima-dev/mdsanima-rt-go/commit/aa2b316181f86813a48d10aaf31bb2fdd7ec2b20))
+
 ## [0.2.0](https://github.com/mdsanima-dev/mdsanima-rt-go/compare/v0.1.0...v0.2.0)
 
 *Date:* *2021-08-17*
