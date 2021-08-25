@@ -190,7 +190,7 @@ class MDSRTGO_layout(Screen):
         text_rt_one_result = MDLabel(
             text=text,
             halign=halign,
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color
@@ -203,7 +203,7 @@ class MDSRTGO_layout(Screen):
         self.text_statistic = MDLabel(
             text=text,
             halign='right',
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color
@@ -216,7 +216,7 @@ class MDSRTGO_layout(Screen):
         self.text_time_code = MDLabel(
             text=text,
             halign='right',
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color,
@@ -230,7 +230,7 @@ class MDSRTGO_layout(Screen):
         self.time_code_human = MDLabel(
             text=text,
             halign='right',
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color
@@ -243,7 +243,7 @@ class MDSRTGO_layout(Screen):
         self.text_rt_one_result = MDLabel(
             text=text,
             halign='right',
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color
@@ -256,7 +256,7 @@ class MDSRTGO_layout(Screen):
         self.hum_rt_one_result = MDLabel(
             text=text,
             halign='right',
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color
@@ -268,24 +268,24 @@ class MDSRTGO_layout(Screen):
         layout = MDFloatLayout()
         slider_hours = MDSlider(
             min=0, max=23, value=0,
-            size_hint=(0.94,None),
-            pos_hint={'center_x':0.5, 'top':0.83},
+            size_hint=(0.94,None), size=('200sp','40sp'),
+            pos_hint={'center_x':0.5, 'top':0.80},
             color='#7c7c7c',
             show_off=False,
             hint_text_color=[.2510,.5529,.9765,0]
         )
         slider_minutes = MDSlider(
             min=0, max=59, value=0,
-            size_hint=(0.94,None),
-            pos_hint={'center_x':0.5, 'top':0.75},
+            size_hint=(0.94,None), size=('200sp','40sp'),
+            pos_hint={'center_x':0.5, 'top':0.72},
             color='#7c7c7c',
             show_off=False,
             hint_text_color=[.2510,.5529,.9765,0]
         )
         slider_seconds = MDSlider(
             min=0, max=59, value=0,
-            size_hint=(0.94,None),
-            pos_hint={'center_x':0.5, 'top':0.67},
+            size_hint=(0.94,None), size=('200sp','40sp'),
+            pos_hint={'center_x':0.5, 'top':0.64},
             color='#7c7c7c',
             show_off=False,
             hint_text_color=[.2510,.5529,.9765,0]
@@ -309,7 +309,7 @@ class MDSRTGO_layout(Screen):
         self.render_time_total = MDLabel(
             text=text,
             halign=halign,
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color,
@@ -318,7 +318,7 @@ class MDSRTGO_layout(Screen):
         self.render_time_total_human = MDLabel(
             text='0 SECONDS',
             halign=halign,
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos - 0.025},
             font_style='Overline',
             theme_text_color='Hint',
@@ -336,7 +336,7 @@ class MDSRTGO_layout(Screen):
         self.render_time_date_start = MDLabel(
             text=text,
             halign=halign,
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color,
@@ -353,7 +353,7 @@ class MDSRTGO_layout(Screen):
         self.render_time_date_complete = MDLabel(
             text=text,
             halign=halign,
-            size_hint=(0.9,None), size=(200,40),
+            size_hint=(0.9,None), size=('200sp','40sp'),
             pos_hint={'center_x':0.5, 'top':pos},
             font_style=style,
             theme_text_color=color,
@@ -453,7 +453,7 @@ class MDSRTGO_scr_1(Screen):
         btn_go_rendering = MDFlatButton(
             text='GO RENDERING!', on_press=self.screen_switch,
             pos_hint={'center_x':0.5, 'center_y':0.6},
-            font_size='35'
+            font_size='35sp'
         )
 
         btn_logo_mdsanima = MDIconButton(
