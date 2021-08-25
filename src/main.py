@@ -20,6 +20,7 @@ from kivy.clock import Clock
 from kivy.uix.image import Image
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.uix.button import Button
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDFlatButton, MDIconButton
@@ -87,7 +88,7 @@ class MDSRTGO_layout(Screen):
 
     def lbl_top(self, icon: str, ic_on_press: None, lbl_text: str):
         """
-        Top nawigation text and icons.
+        Top navigation text and icons.
 
         :param icon: icon name
         :type icon: str
@@ -96,27 +97,32 @@ class MDSRTGO_layout(Screen):
         :param lbl_text: label text on the top nawigation
         :type lbl_text: str
         """
-        layout = MDFloatLayout()
-        back_to_main = MDIconButton(
-            on_press=ic_on_press,
-            font_size='45sp',
-            pos_hint={'center_x':0.07, 'center_y':0.96},
-            icon=icon,
-            theme_text_color='Custom',
-            text_color=[.2510,.5529,.9765,1],
-            md_bg_color=[0,0,0,0]
-        )
-        top_name = MDLabel(
-            text=lbl_text,
-            halign='left',
-            size_hint=(None,None), size=(450,40),
-            pos_hint={'center_x':0.56, 'center_y':0.96},
-            font_style='H5',
-            theme_text_color='Primary',
-            markup=True
-        )
-        layout.add_widget(back_to_main)
-        layout.add_widget(top_name)
+        layout = MDBoxLayout()
+        layout.orientation = 'horizontal'
+        layout.padding = ['10sp', '10sp', 0, 0]
+
+        icons = MDIconButton()
+        icons.icon = icon
+        icons.size_hint_x = None
+        icons.size_hint_y = None
+        icons.pos_hint = {'top': 1}
+        icons.theme_text_color = 'Custom'
+        icons.text_color = [0.2510, 0.5529, 0.9765, 1]
+        icons.on_press = ic_on_press
+
+        label = MDLabel()
+        label.text = lbl_text
+        label.width = '550sp'
+        label.height = icons.size[0]
+        label.size_hint_x = None
+        label.size_hint_y = None
+        label.pos_hint = {'top': 1}
+        label.font_style = 'H5'
+        label.theme_text_color = 'Primary'
+        label.markup = True
+
+        layout.add_widget(icons)
+        layout.add_widget(label)
         self.add_widget(layout)
 
     def lbl_info_version(self):
@@ -150,9 +156,10 @@ class MDSRTGO_layout(Screen):
         """
         layout = MDFloatLayout()
         background = Image(
-            source=resource_path(image), size=self.size, pos=self.pos,
-            size_hint_y=None, size_hint_x=None,
-            height='1849sp', width='1075sp',
+            source=resource_path(image),
+            size=self.size, pos=self.pos,
+            width='1075sp', height='1849sp',
+            size_hint_x=None, size_hint_y=None,
             pos_hint={'center_x':0.5, 'center_y':0.5},
             allow_stretch=True
         )
@@ -178,7 +185,7 @@ class MDSRTGO_layout(Screen):
     def lbl_text(
             self, text: str, pos: int, style: str,
             color: str, halign: str='left'
-        ):
+    ):
         layout = MDFloatLayout()
         text_rt_one_result = MDLabel(
             text=text,
@@ -297,7 +304,7 @@ class MDSRTGO_layout(Screen):
     def lbl_rt_total(
             self, text: str, pos: int, style: str,
             color: str, halign: str='center'
-        ):
+    ):
         layout = MDFloatLayout()
         self.render_time_total = MDLabel(
             text=text,
@@ -324,7 +331,7 @@ class MDSRTGO_layout(Screen):
     def lbl_rt_date_start(
             self, text: str, pos: int, style: str,
             color: str, halign: str='center'
-        ):
+    ):
         layout = MDFloatLayout()
         self.render_time_date_start = MDLabel(
             text=text,
@@ -341,7 +348,7 @@ class MDSRTGO_layout(Screen):
     def lbl_rt_date_complete(
             self, text: str, pos: int, style: str,
             color: str, halign: str='center'
-        ):
+    ):
         layout = MDFloatLayout()
         self.render_time_date_complete = MDLabel(
             text=text,
@@ -530,8 +537,9 @@ class MDSRTGO_scr_2(Screen):
 
         # assigning class to variable
         btn_app_info = MDFlatButton(
-            text='APP INFO', size_hint=(None,None), size=(101,40),
-            pos_hint={'x':0.416,'y':0.03},
+            text='APP INFO',
+            size_hint=(None,None), size=(101,40),
+            pos_hint={'center_x':0.5, 'y':0.03},
             on_release=self.screen_switch
         )
 
@@ -580,7 +588,7 @@ class MDSRTGO_scr_2(Screen):
         # draw all widget
         self.add_widget(layout)
 
-    def screen_switch(self, instance):
+    def screen_switch(self):
         self.manager.current = 'scr_3'
         self.manager.transition.direction = 'up'
 
@@ -602,14 +610,14 @@ class MDSRTGO_scr_3(Screen):
         # assigning class to variable
         img_logo_mdsanima = Image(
             source=resource_path(img[5]),
-            size=(211,211), pos=self.pos,
+            size=('211sp','211sp'), pos=self.pos,
             size_hint_y=None,
             allow_stretch=True,
         )
 
         img_ascii_mdsanima = Image(
             source=resource_path(img[4]),
-            size=(422,422), pos=self.pos,
+            size=('422sp','422sp'), pos=self.pos,
             size_hint_y=None,
             allow_stretch=True,
         )
@@ -624,7 +632,10 @@ class MDSRTGO_scr_3(Screen):
         self.add_widget(layout)
 
         # assigning class to variable
-        layout_box = MDBoxLayout(padding=[0,60,0,35], orientation='vertical')
+        layout_box = MDBoxLayout(
+            orientation='vertical',
+            padding=[0,'60sp',0,'35sp']
+        )
         scroll_view = ScrollView()
         self.list_view = MDList()
 
@@ -724,7 +735,7 @@ class MDSRTGO_scr_3(Screen):
         # draw all widget
         self.add_widget(layout_box)
 
-    def screen_switch(self, instance):
+    def screen_switch(self):
         self.manager.current = 'scr_2'
         self.manager.transition.direction = 'right'
 
