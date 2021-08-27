@@ -3,8 +3,6 @@ Layout module. Here is a render time calculation function.
 """
 
 
-from __init__ import __version__
-
 from datetime import datetime, timedelta
 
 from humanfriendly import format_timespan
@@ -18,6 +16,7 @@ from kivymd.uix.progressbar import MDProgressBar
 from kivymd.uix.slider import MDSlider
 from kivymd.uix.textfield import MDTextField
 
+from __init__ import __version__
 from libs.timecode import frames_to_time_code
 
 
