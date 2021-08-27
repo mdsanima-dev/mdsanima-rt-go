@@ -15,12 +15,12 @@ from datetime import datetime, timedelta
 from config import windows
 from config.image import get_images
 from config.setting import check_platform, theme_kivy
+from libs.timecode import frames_to_time_code
 
 from kivy.clock import Clock
 from kivy.uix.image import Image
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import Screen, ScreenManager
-from kivy.uix.button import Button
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDFlatButton, MDIconButton
@@ -47,31 +47,6 @@ def resource_path(relative_path: str):
     base_path = getattr(
         sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
-
-
-def frames_to_time_code(frames: int, fps: int) -> str:
-    """
-    Function converts frames to time code `00:00:00:00` format
-
-    :param frames: number of total frames
-    :type frames: int
-    :param fps: frames per second
-    :type fps: int
-    :return: time code format
-    :rtype: str
-    """
-    sec_in_min = 60
-    fra_in_min = sec_in_min * fps
-    fra_in_hrs = sec_in_min * fra_in_min
-
-    hrs = int(frames / fra_in_hrs)
-    min = int(frames / fra_in_min) % sec_in_min
-    sec = int((frames % fra_in_min) / fps)
-    fra = int((frames % fra_in_min) % fps)
-
-    time_code = str("%02d:%02d:%02d:%02d" % (hrs, min, sec, fra))
-
-    return time_code
 
 
 class MDSRTGO_layout(Screen):
