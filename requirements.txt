@@ -1,6 +1,6 @@
 kivy==2.0.0
 kivymd==0.104.2
-pyinstaller==4.5.1
+pyinstaller==5.13.1
 Kivy-garden==0.1.4
 kivy-garden.graph
 gstreamer-player==1.1.2
